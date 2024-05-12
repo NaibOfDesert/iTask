@@ -1,4 +1,20 @@
 ﻿<Properties StartupConfiguration="{D41A9DE5-429D-47AA-A1D7-8E7E1061A7A3}|https">
-  <MonoDevelop.Ide.ItemProperties.iTask FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.iTask PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" FirstBuild="True" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="iTask" expanded="True" selected="True">
+            <Node name="iTask" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
