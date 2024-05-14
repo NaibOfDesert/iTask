@@ -1,3 +1,4 @@
-public interface ITaskRepository{
+public interface ITaskRepository : IRepository<Task>
+{
     
 }

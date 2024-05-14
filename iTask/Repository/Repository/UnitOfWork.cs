@@ -1,7 +1,12 @@
 
-
+using iTask.Data;
 public class UnitOfWork : IUnitOfWork
 {
-    public ITaskRepository Task { get; set;}
+    public ApplicationDbContext _db; 
+    public ITaskRepository task { get; set;}
 
+    public UnitOfWork(ApplicationDbContext db){
+        _db = db;
+        task = new TaskRepository(db);  
+    }
 }
