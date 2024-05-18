@@ -10,17 +10,18 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
-    public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+    public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-        _unitOfWork = unitOfWork;
+        // _unitOfWork = unitOfWork;
 
     }
 
     public IActionResult Index()
     {
-        IEnumerable<Task> taskList = _unitOfWork.tasks.GetAll();
-        return View(taskList);
+        // IEnumerable<Task> taskList = _unitOfWork.tasks.GetAll();
+        // return View(taskList);
+        return View();
     }
 
     public IActionResult Privacy()
