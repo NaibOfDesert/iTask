@@ -19,7 +19,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        IEnumerable<Task> taskList = _unitOfWork.tasks.GetAll();
+        return View(taskList);
     }
 
     public IActionResult Privacy()

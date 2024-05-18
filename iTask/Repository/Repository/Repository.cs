@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    ApplicationDbContext _db; 
+    private readonly ApplicationDbContext _db; 
     public DbSet<T> dbSet;
 
     public Repository(ApplicationDbContext db)
