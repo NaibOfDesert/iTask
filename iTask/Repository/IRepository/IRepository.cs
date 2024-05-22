@@ -3,6 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 public interface IRepository <T> where T : class
 {
-    public IEnumerable<T> GetAll(); 
+    public List<T> GetAll(); 
 
 }

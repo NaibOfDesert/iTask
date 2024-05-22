@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using iTask.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ public class Repository<T> : IRepository<T> where T : class
         _db = db;
         dbSet = db.Set<T>();
     }
-    public IEnumerable<T> GetAll()
+    public List<T> GetAll()
     {
         IQueryable<T> query = dbSet; 
         return query.ToList(); 
