@@ -14,7 +14,6 @@ services:
       - mssqlserver
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionString__DefaultConnection=server=mssqlserver;Database=dc226aca7380;User Id=mssql;Password=Wr7u4e8b;
   mssqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: db-1
