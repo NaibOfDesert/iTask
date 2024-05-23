@@ -12,14 +12,14 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     //public DbSet DbSet<ApplicationUser> Users { get;}
-    public DbSet<Task> Tasks { get; set; }
+    public DbSet<Assignment> TaAssignments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Task>().HasData(
-            new Task {Id = 1},
-            new Task {Id = 2}
+        modelBuilder.Entity<Assignment>().HasData(
+            new Assignment {Id = 1},
+            new Assignment {Id = 2}
         );
     }
 

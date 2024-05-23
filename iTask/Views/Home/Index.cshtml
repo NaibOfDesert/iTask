@@ -1,4 +1,4 @@
-﻿@model List<Task>
+﻿@model IEnumerable<Assignment>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -6,10 +6,12 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    @foreach(var t in Model){
-        <div> @t.Id</div>
+    @{
+        foreach(var a in Model){
+            <div> @a.Id</div>
+        }
     }
+
     <div> cos</div>
 </div>
 

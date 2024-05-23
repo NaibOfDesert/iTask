@@ -1,4 +1,4 @@
 public interface IUnitOfWork
 {
-    public ITaskRepository tasks {get;}
+    public IAssignmentRepository assignments {get;}
 }

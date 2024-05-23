@@ -1,6 +1,8 @@
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using iTask.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -16,5 +18,7 @@ public class Repository<T> : IRepository<T> where T : class
     {
         IQueryable<T> query = dbSet; 
         return query.ToList(); 
+        Console.WriteLine(query.GetType());
+    
     }
 }

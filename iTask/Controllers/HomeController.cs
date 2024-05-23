@@ -18,8 +18,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        List<Task> taskList = _unitOfWork.tasks.GetAll();
-        return View(taskList);
+        // List<Task> taskList = _unitOfWork.tasks.GetAll();
+        IEnumerable<Assignment> assignmentList = new List<Assignment>{ new Assignment {Id = 1}};
+        
+        return View(assignmentList);
     }
 
     public IActionResult Privacy()

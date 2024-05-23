@@ -5,10 +5,10 @@ using System.Text;
 using System;
 using iTask.Data;
 
-public class TaskRepository : Repository<Task>, ITaskRepository
+public class AssignmentRepository : Repository<Assignment>, IAssignmentRepository
 {
     public ApplicationDbContext _db; 
-    public TaskRepository(ApplicationDbContext db) : base(db)
+    public AssignmentRepository(ApplicationDbContext db) : base(db)
     {
         _db = db;
     }
