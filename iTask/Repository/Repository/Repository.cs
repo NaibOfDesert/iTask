@@ -17,8 +17,6 @@ public class Repository<T> : IRepository<T> where T : class
     public List<T> GetAll()
     {
         IQueryable<T> query = dbSet; 
-        return query.ToList(); 
-        Console.WriteLine(query.GetType());
-    
+        return query.ToList();     
     }
 }
