@@ -21,14 +21,4 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: Wr7u4e8b
     restart: always
-  browsersync:
-    build:
-      context: .
-      dockerfile: browsersync.Dockerfile
-    ports:
-      - "3000:3000"
-      - "3001:3001"
-    command: ["browser-sync", "start", "--proxy", "localhost/itask", "--files", "**/*.cshtml, **/*.html, **/*.css, **/*.js"]
-    depends_on:
-      - itask
 
