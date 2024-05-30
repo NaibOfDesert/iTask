@@ -21,4 +21,15 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: Wr7u4e8b
     restart: always
+  browser-sync: 
+    image: node:latest
+    working_dir: /app
+    volumes: 
+    - .:/app
+    ports: 
+    - "3000:3000" 
+    command: "npm install && npx browser-sync start --config bs-config.js"
+    depends_on:
+      - itask
+
 
