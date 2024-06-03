@@ -17,10 +17,16 @@ public class ApplicationDbContext : IdentityDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<Project>().HasData(
+            new Project {Id = 1}, 
+            new Project {Id = 2}
+        );
+        
         modelBuilder.Entity<Assignment>().HasData(
             new Assignment {Id = 1},
             new Assignment {Id = 2}
         );
+
     }
 
 }
