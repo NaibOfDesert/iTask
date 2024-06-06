@@ -8,6 +8,6 @@ public class Assignment
     // [Required]
     public AssigmnetsState State {get; set;}
     // [Required]
-    public Project Project {get; set;}
+    // public Project Project {get; set;}
 
 }
