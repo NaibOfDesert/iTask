@@ -23,8 +23,8 @@ public class ApplicationDbContext : IdentityDbContext
         );
         
         modelBuilder.Entity<Assignment>().HasData(
-            new Assignment {Id = 1},
-            new Assignment {Id = 2}
+            new Assignment {Id = 1, State = AssigmnetsState.ToDo},
+            new Assignment {Id = 2, State = AssigmnetsState.ToDo}
         );
 
     }
