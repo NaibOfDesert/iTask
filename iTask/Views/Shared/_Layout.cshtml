@@ -11,46 +11,30 @@
 </head>
 
 <body>
-    <div class="sidefield">
-        <div class="container-layout"> 
-            <a asp-area="" asp-controller="Home" asp-action="Index">
-                <partial name="_LoginPartial" />
-            </a>
- 
-            <div class="">
-                <a class="a" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
-                <ul class="">
-                    <li class="">
-                        <a>aa  </a> 
-
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-    </div>
-
-    <div class="mainfield">
-        <div class="container-layout"> 
-                <a class="a" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/img/itask.png" alt="iTask" style="width:36px; height:36px">
-                    iTask
-                </a>
-        <main role="main" class="pb-3">
+    <div class=""> 
+        <main role="main">
             @RenderBody()
-
         </main>
 
-        </div>
-       
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2024 - iTask - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <footer class="footer">
+            <div class="container a-text">
+                &copy; 2024 iTask <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>
     </div>
+
+
+                
+
+
+
+
+
+
+
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

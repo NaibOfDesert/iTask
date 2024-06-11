@@ -3,16 +3,49 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @{
-        foreach(var a in Model){
-            <div> @a.Id</div>
-            <div> @a.State</div>
-        }
-    }
+<div class="container-side">
+    <div class="container-layout"> 
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <partial name="_LoginPartial" />
+        </a>
 
-    <div> cos 2x  xxx yyyy zzz  aaa test2  ssss ss</div>
+        <div class="">
+            <a class="a-text" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
+            <ul class="">
+                <li class="">
+                    <div class="text-center">
+                        @{
+                            foreach(var a in Model){
+                                <div class="a-text"> @a.Id</div>
+                                <div class="a-text"> @a.State</div>
+                            }
+                        }
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
 </div>
+
+<div class="container-basic">
+    <div class="container-layout"> 
+            <a class="a-text" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/itask.png" alt="iTask" style="width:36px; height:36px">
+                iTask
+            </a>
+    
+    </div>
+</div>
+
+<h1> test</h1>
+
+
+
+
+
+
+
+
 
