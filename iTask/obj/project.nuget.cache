@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/80WG1kmp8P/kPiWWOfY3tIMi3tqOMyc7ac0bIMCPnEyXcPZAIrynAHS1lmJjUgGmh6qZooYFouva1ftIpHXYw==",
+  "dgSpecHash": "uwy77E9BaZiMslITobP+5cxVc0xJnU2E/HKVru0HyDD0l8p/CTRrs/ehYUJYfWqXOLv+hmWHrUqhZuNOTAE+Fg==",
   "success": true,
   "projectFilePath": "/Users/artur/Documents/GitHub/iTask/iTask/iTask.csproj",
   "expectedPackageFiles": [
     "/Users/artur/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/artur/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
+    "/Users/artur/.nuget/packages/bootstrap/5.3.3/bootstrap.5.3.3.nupkg.sha512",
     "/Users/artur/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/artur/.nuget/packages/microsoft.aspnetcore.cryptography.internal/7.0.13/microsoft.aspnetcore.cryptography.internal.7.0.13.nupkg.sha512",
     "/Users/artur/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/7.0.13/microsoft.aspnetcore.cryptography.keyderivation.7.0.13.nupkg.sha512",

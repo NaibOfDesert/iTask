@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<Assignment>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -8,12 +12,14 @@
         <a asp-area="" asp-controller="Home" asp-action="Index">
             <partial name="_LoginPartial" />
         </a>
-
+        @if(SignInManager.IsSignedIn(User)){
+            // space for project list after login 
+        }
         <div class="">
             <a class="a-text" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
             <ul class="">
                 <li class="">
-                    <div class="text-center">
+                    <div class="">
                         @{
                             foreach(var a in Model){
                                 <div class="a-text"> @a.Id</div>
@@ -24,8 +30,8 @@
 
                 </li>
             </ul>
-
         </div>
+        
     </div>
 </div>
 
