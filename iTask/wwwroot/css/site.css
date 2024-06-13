@@ -1,4 +1,14 @@
-﻿html {
+﻿#intro {
+  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+  height: 100vh;
+}
+
+#menu {
+  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+  height: 100vh;
+}
+
+html {
   font-size: 14px;
   font-family: Verdana, sans-serif;
 
@@ -90,7 +100,6 @@ footer{
   width: 80%;
   white-space: nowrap;
   line-height: 60px;
-  background-color: black;
 
 }
 

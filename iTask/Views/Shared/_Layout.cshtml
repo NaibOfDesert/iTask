@@ -4,21 +4,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>@ViewData["Title"] - iTask</title>  
+    
     <link icon="itask.png" typ="image/x-icon" href="/img/itask.png" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/iTask.styles.css" asp-append-version="true" />
-
     
+    <style>
+        #intro {
+        background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+        height: 100vh;
+        }
 
-    
+        #nav-bar {
+        background-image: "/img/itask.png" ;
+        }
+    </style>
 </head>
-
 <body>
-
-
-    <main class="d-flex flex-nowrap">
+    <main id="nav-bar" class="d-flex flex-nowrap" style="background-color: rgb(132, 63, 185);">
         <h1 class="visually-hidden">Sidebars examples</h1>
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -29,90 +36,60 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house pe-none me-2" viewBox="0 0 16 16">
-                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                    </svg>
-                    Home
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-fill h6" style="color: white;"></i>
+                        Home
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard pe-none me-2" viewBox="0 0 16 16">
-                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
-                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
-                    </svg>
-                    Dashboard
-                    </a>
+                    <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true"> 
+                        <i class="bi bi-clipboard-fill h6"></i>
+                        Projects List
+                        <div class="collapse hide" id="projects-collapse" style="">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;"> 
+                                <li><a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Project 1</a></li>
+                                <li><a href="#" class="nav-link text-white">Project 2</a></li>
+                            </ul>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#tasks-collapse" aria-expanded="true"> 
+                        <i class="bi bi-view-list h6"></i>
+                        Recent Tasks
+                        <div class="collapse hide" id="tasks-collapse" style=""> 
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;">
+                                <li><a href="#" class="nav-link text-white">Task 1</a></li>
+                                <li><a href="#" class="nav-link text-white">Task 1</a></li>
+
+                            </ul>
+
+                        </div>
+                    </button>
                 </li>
                 <li>
                     <a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                    Orders
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                    Products
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                    Customers
+                        <i class="bi bi-clipboard-pulse"></i>                    
+                        Ranks
                     </a>
                 </li>
             </ul>
             <hr>
-            
+
+            <footer class="footer">
+                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">&copy; 2024 iTask Privacy</a>
+            </footer>
         </div>
     </main>
-    <div class="container"> 
+
+    <div class="container bg-image"> 
         <main role="main">
             @RenderBody()
         </main>
 
-            <i class="bi bi-back"></i>
-            <i class="bi bi-arrow-left-square-fill"></i>
-            <a> aaaaaa</a>
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <footer class="footer">
-
-            <div class="container">
-                &copy; 2024 iTask <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
     </div>
-
-
-                
-
-
-
-
-
-
-
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
