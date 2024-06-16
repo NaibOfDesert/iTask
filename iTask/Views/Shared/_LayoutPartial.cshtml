@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bi bi-house-fill h6" style="color: white;"></i>
+                Home
+            </a>
+        </li>
+        <li>
+            <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true"> 
+                <i class="bi bi-clipboard-fill"></i>
+                Projects List
+            </button>
+            <div class="collapse hide" id="projects-collapse" style="">
+                <ul class="btn btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;"> 
+                    <li><a class=" nav-link text-white" asp-area="" asp-controller="Project" asp-action="Project">Project 1</a></li>
+                    <li><a href="#" class="nav-link text-white">Project 2</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#tasks-collapse" aria-expanded="true"> 
+                <i class="bi bi-view-list h6"></i>
+                Recent Tasks
+                <div class="collapse hide" id="tasks-collapse" style=""> 
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;">
+                        <li><a href="#" class="nav-link text-white">Task 222</a></li>
+                        <li><a href="#" class="nav-link text-white">Task 1</a></li>
+
+                    </ul>
+
+                </div>
+            </button>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+                <i class="bi bi-clipboard-pulse"></i>                    
+                Ranks
+            </a>
+        </li>
+    </ul>
+    <hr>
+}
+else {
+    <a class="d-flex text-white text-decoration-none"> Informations about portal</a>
+}

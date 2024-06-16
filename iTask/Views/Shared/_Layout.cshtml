@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,13 +19,8 @@
     <link rel="stylesheet" href="~/iTask.styles.css" asp-append-version="true" />
     
     <style>
-        #intro {
-        background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
-        height: 100vh;
-        }
-
         #nav-bar {
-        background-image: url("/img/nav-image-2.jpg");
+        background-image: url("/img/nav-image-1.jpg");
         background-size: cover;
         background-blend-mode: luminosity;
         background-color: rgb(51, 8, 81);
@@ -29,72 +29,38 @@
 </head>
 <body>
     <div id="nav-bar" class="d-flex flex-nowrap bg-image object-fit-scale">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+        <div class="container d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; hight: 100%;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <a asp-area="" asp-controller="Home" asp-action="Index">
                     <partial name="_LoginPartial" />
                 </a>
             </a>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">
-                        <i class="bi bi-house-fill h6" style="color: white;"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#projects-collapse" aria-expanded="true"> 
-                        <i class="bi bi-clipboard-fill h6"></i>
-                        Projects List
-                        <div class="collapse hide" id="projects-collapse" style="">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;"> 
-                                <li><a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Project 1</a></li>
-                                <li><a href="#" class="nav-link text-white">Project 2</a></li>
-                            </ul>
-                        </div>
-                    </button>
-                </li>
-                <li>
-                    <button class="nav-link text-white btn-toggle" data-bs-toggle="collapse" data-bs-target="#tasks-collapse" aria-expanded="true"> 
-                        <i class="bi bi-view-list h6"></i>
-                        Recent Tasks
-                        <div class="collapse hide" id="tasks-collapse" style=""> 
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;">
-                                <li><a href="#" class="nav-link text-white">Task 1</a></li>
-                                <li><a href="#" class="nav-link text-white">Task 1</a></li>
-
-                            </ul>
-
-                        </div>
-                    </button>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-white">
-                        <i class="bi bi-clipboard-pulse"></i>                    
-                        Ranks
-                    </a>
-                </li>
-            </ul>
-            <hr>
-
-            <footer class="footer">
+            <partial name="_LayoutPartial"/>
+            <footer class="footer" style="bottom: 10px">
                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">&copy; 2024 iTask Privacy</a>
             </footer>
+
         </div>
     </div>
 
-    <div class="d-flex flex-nowrap bg-image object-fit-scale mb-3 mb-md-0 me-md-auto"> 
-            <a class="nav-text text-white" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/img/itask.png" alt="iTask" style="width:36px; height:36px">
-                iTask
-            </a>
-        
-        <main role="main">
-            @RenderBody()
-        </main>
 
-    </div>
+
+    <div class="d-flex flex-nowrap object-fit-scale" style="width: 100%">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark ">
+            <a class="d-flex align-items-center text-white text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/itask.png" alt="iTask" style="width:36px; height:36px">
+                <strong>iTask</strong>
+            </a>
+            <hr> 
+            <main role="main">
+                @RenderBody()
+            </main>
+
+            </div> 
+    </div> 
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
