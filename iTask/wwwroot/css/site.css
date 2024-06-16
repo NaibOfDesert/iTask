@@ -97,10 +97,7 @@ footer{
   position: relative;
   bottom: 0;
   float : right;
-  width: 80%;
-  white-space: nowrap;
-  line-height: 60px;
-
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .container-layout{
