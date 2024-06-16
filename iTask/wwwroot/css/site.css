@@ -1,22 +1,9 @@
-﻿#intro {
-  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
-  height: 100vh;
-}
-
-#menu {
-  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
-  height: 100vh;
-}
+﻿
 
 html {
   font-size: 14px;
   font-family: Verdana, sans-serif;
 
-}
-
-
-
-div {
 }
 
 @media (min-width: 768px) {
@@ -40,7 +27,7 @@ body {
   display: flex; 
   /* flex-direction: column */
   min-height: 100vh;
-  background-color: #000;;
+  background-color: #000;
 }
 
 footer{

@@ -20,13 +20,15 @@
         }
 
         #nav-bar {
-        background-image: "/img/itask.png" ;
+        background-image: url("/img/nav-image-2.jpg");
+        background-size: cover;
+        background-blend-mode: luminosity;
+        background-color: rgb(51, 8, 81);
         }
     </style>
 </head>
 <body>
-    <main id="intro" class="d-flex flex-nowrap" style="background-color: rgb(132, 63, 185);">
-        <h1 class="visually-hidden">Sidebars examples</h1>
+    <div id="nav-bar" class="d-flex flex-nowrap bg-image object-fit-scale">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <a asp-area="" asp-controller="Home" asp-action="Index">
@@ -80,14 +82,17 @@
                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">&copy; 2024 iTask Privacy</a>
             </footer>
         </div>
-    </main>
+    </div>
 
-    <div class="container bg-image"> 
+    <div class="d-flex flex-nowrap bg-image object-fit-scale mb-3 mb-md-0 me-md-auto"> 
+            <a class="nav-text text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/itask.png" alt="iTask" style="width:36px; height:36px">
+                iTask
+            </a>
+        
         <main role="main">
             @RenderBody()
         </main>
-
-
 
     </div>
 
