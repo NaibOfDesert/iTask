@@ -40,12 +40,17 @@ a {
   color: rgb(51, 171, 45);
 }
 
+.a-left{
+  text-align: left;
+}
+
 .a-text {
   color: white;
   font: optional;
 }
 
-h1 {
+.strong-main {
+  font-size: 50px;
   color: white;
 }
 

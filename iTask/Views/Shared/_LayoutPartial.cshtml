@@ -16,8 +16,9 @@
                 <i class="bi bi-clipboard-fill"></i>
                 Projects List
             </button>
-            <div class="collapse hide" id="projects-collapse" style="">
-                <ul class="btn btn-toggle-nav list-unstyled fw-normal pb-1 small" style="float: left;"> 
+            <div class="collapse hide" id="projects-collapse">
+                <ul class="btn btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a class=" nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index">View All</a></li>
                     <li><a class=" nav-link text-white" asp-area="" asp-controller="Project" asp-action="Project">Project 1</a></li>
                     <li><a href="#" class="nav-link text-white">Project 2</a></li>
                 </ul>
