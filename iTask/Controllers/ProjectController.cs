@@ -17,7 +17,7 @@ public class ProjectController : Controller
         return View();
     }
 
-    public ActionResult Project(){
+    public ActionResult Details(){
         return View();
     }
 

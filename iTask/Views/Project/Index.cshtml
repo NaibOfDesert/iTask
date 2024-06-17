@@ -3,16 +3,30 @@
     ViewData["Title"] = "Projects Page";
 }
 
-<div class="" style="width: 100%">
-    <h1 class="text-white">Projects</h1>   
-    <ul class="navbar-nav flex-grow-1" style="align-items: center;">
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
 
+<h1 class="text-white text-center">Projects</h1>   
 
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
-        </li>
-    </ul>
+<div class="row pb-3">
+    @for(int i=0; i<3; i++)
+    {
+        <div class="col-lg-2 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 border-top border-5 border-secondary rounded rounded-1 bg-dark">
+                        <img src="/img/image.jpg" class="card-img-top rounded img"/>
+                        <div class="card-body pb-0">
+                            <p class="card-title h5 text-light text-uppercase text-center">Title</p>
+                        </div>
+                        <div class="pl-1">
+                            <p class="text-white text-center">0/4</p>
+                        </div>
+                        <div>
+                            <a asp-action="Details" asp-route-id="Id" class="btn btn-secondary border-0 form-control">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
 </div>
