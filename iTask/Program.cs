@@ -42,6 +42,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+SeedDatabase();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -49,3 +51,11 @@ app.MapRazorPages();
 
 app.Run();
 
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
