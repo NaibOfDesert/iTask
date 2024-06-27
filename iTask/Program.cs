@@ -42,7 +42,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-SeedDatabase();
+// SeedDatabase();
 
 app.MapControllerRoute(
     name: "default",
