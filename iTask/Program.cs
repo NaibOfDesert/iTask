@@ -18,7 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
@@ -42,7 +42,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// SeedDatabase();
+SeedDatabase();
 
 app.MapControllerRoute(
     name: "default",
