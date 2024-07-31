@@ -4,31 +4,39 @@
 }
 
 
-<h1 class="text-white text-center">Projects</h1>   
+<h1 class="text-white text-center">Projects</h1>  
+<div class="">
+ <table class="table table-responsive text-white">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">date start</th>
+                <th scope="col">date end</th>
+                <th scope="col">duration</th>
+                <th scope="col">status</th>
+            </tr>
 
-<div class="row">
 
-        <div class="col-sm-12">
-            <div class="row p-1">
-                @for(int i=0; i<4; i++)
-                {
-                <div class="col-2 p-1">
-                    <div class="card border-0 border-top border-5 border-secondary rounded rounded-1 bg-dark">
-                        <img src="/img/image.jpg" class="card-img-top rounded"/>
-                        <div class="card-body pb-0">
-                            <p class="card-title h5 text-light text-uppercase text-center">Title</p>
-                        </div>
-                        <div class="pl-1">
-                            <p class="text-white text-center">0/4</p>
-                        </div>
-                        <div>
-                            <a asp-action="Details" asp-route-id="Id" class="btn btn-secondary border-0 form-control">View</a>
-                        </div>
-                    </div>
-                </div>
-                }
-            </div>
-        </div>
+        </thead>
+        @for(int i=0; i<7; i++)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">@i</th>
+                    <th >i Name</th>
+                    <th >2024.07.30</th>
+                    <th scope="">2024.08.30</th>
+                    <th scope="">30</th>
+                    <th scope="">open</th>
+                </tr>
+            </tbody>
+
+        }
+    </table>
+
+</div> 
+   
+
     
     
-</div>
