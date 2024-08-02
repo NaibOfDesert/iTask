@@ -14,6 +14,9 @@ public class ProjectController : Controller
     }
 
     public ActionResult Index(){
+        
+        List<Project> projects = _unitOfWork.projects.GetAll();
+
         return View();
     }
 
