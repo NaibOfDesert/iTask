@@ -1,8 +1,13 @@
 ﻿
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_bold.woff);
+  font-weight: bold;
+}
 
 html {
   font-size: 14px;
-  font-family: Verdana, sans-serif;
+  font-family: Comfortaa;
 
 }
 
@@ -22,9 +27,15 @@ html {
 }
 
 body {  
-  font-family: Tahoma, sans-serif;
+  font-family: Comfortaa;
   display: flex; 
-  /* flex-direction: column */
   min-height: 100vh;
-  background-color: black;
+  background-color: rgb(164, 33, 33);
 }
+
+#nav-bar {
+  background-image: url("/img/nav-image-1.jpg");
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-color: rgb(51, 8, 81);
+  }

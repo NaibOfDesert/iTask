@@ -17,10 +17,21 @@ public class ProjectController : Controller
         
         List<Project> projects = _unitOfWork.projects.GetAll();
 
+        return View(projects);
+    }
+
+    [HttpPost]
+    public ActionResult Details(){
+        return View();
+    } 
+
+    public ActionResult Assignments(){
+
+        List<Assignment> assignments = _unitOfWork.assignments.GetAll();
         return View();
     }
 
-    public ActionResult Details(){
+    public ActionResult Ranks(){
         return View();
     }
 

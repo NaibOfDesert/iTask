@@ -18,8 +18,9 @@ public class ApplicationDbContext : IdentityDbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Project>().HasData(
-            new Project {Id = 1}, 
-            new Project {Id = 2}
+            new Project {Id = 1, Name = "Project1", State = ProjectState.open}, 
+            new Project {Id = 2, Name = "Project2", State = ProjectState.open},
+            new Project {Id = 33, Name = "Project33", State = ProjectState.closed}
         );
         
         modelBuilder.Entity<Assignment>().HasData(
