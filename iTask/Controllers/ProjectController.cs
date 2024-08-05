@@ -21,8 +21,8 @@ public class ProjectController : Controller
     }
 
     [HttpPost]
-    public ActionResult Details(){
-        return View();
+    public ActionResult Details(int id){
+        return View(id);
     } 
 
     public ActionResult Assignments(){
