@@ -20,7 +20,7 @@ public class ProjectController : Controller
         return View(projects);
     }
 
-    [HttpPost]
+  
     public ActionResult Details(int id){
         return View(id);
     } 
@@ -28,7 +28,7 @@ public class ProjectController : Controller
     public ActionResult Assignments(){
 
         List<Assignment> assignments = _unitOfWork.assignments.GetAll();
-        return View();
+        return View(assignments);
     }
 
     public ActionResult Ranks(){
