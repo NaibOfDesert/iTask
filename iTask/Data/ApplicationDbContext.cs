@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity; 
+using Microsoft.AspNetCore.Identity;
 
 namespace iTask.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    private readonly UserManager<IdentityUser> _userMenager; 
+    public DbSet<Assignment> TaAssignments { get; set; }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, UserManager<IdentityUser> userMenager) : base(options)
     {
+        _userMenager = userMenager;
     }
 
-    //public DbSet DbSet<ApplicationUser> Users { get;}
-    public DbSet<Assignment> TaAssignments { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
