@@ -6,24 +6,22 @@ using Microsoft.AspNetCore.Identity;
 
 namespace iTask.Data;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<Project> Projects { get; set; }
-    public override DbSet<IdentityUser> Users { get; set; }
+    public override DbSet<ApplicationUser> Users { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
       
     }
 
-
-
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
-
+    
         modelBuilder.Entity<ApplicationUser>().HasData(
-            new ApplicationUser {Name = "Admin", Email = "admin@admin.com", PasswordHash = "a1b2c3"}
+            SeedAdmin()
         );
 
         modelBuilder.Entity<Project>().HasData(
@@ -37,6 +35,17 @@ public class ApplicationDbContext : IdentityDbContext
             new Assignment {Id = 2, State = AssigmnetsState.ToDo}
         );
 
+    }
+
+    private ApplicationUser SeedAdmin(){
+        ApplicationUser admin = new ApplicationUser(){
+            Name = "Admin",
+            Email = "admin@admin.com"
+        };
+        PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
+        admin.PasswordHash = passwordHasher.HashPassword(admin, "sq37!aa1#");
+
+    return admin; 
     }
 
 }
