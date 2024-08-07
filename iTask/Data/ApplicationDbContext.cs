@@ -9,6 +9,9 @@ namespace iTask.Data;
 public class ApplicationDbContext : IdentityDbContext
 {
     public DbSet<Assignment> Assignments { get; set; }
+    public DbSet<Project> Projects { get; set; }
+    public override DbSet<IdentityUser> Users { get; set; }
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
       
@@ -18,7 +21,10 @@ public class ApplicationDbContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<IdentityRole>().HasData()
+
+        modelBuilder.Entity<ApplicationUser>().HasData(
+            new ApplicationUser {Name = "Admin", Email = "admin@admin.com", PasswordHash = "a1b2c3"}
+        );
 
         modelBuilder.Entity<Project>().HasData(
             new Project {Id = 1, Name = "Project1", State = ProjectState.open}, 
