@@ -8,17 +8,17 @@ namespace iTask.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
-    private readonly UserManager<IdentityUser> _userMenager; 
-    public DbSet<Assignment> TaAssignments { get; set; }
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, UserManager<IdentityUser> userMenager) : base(options)
+    public DbSet<Assignment> Assignments { get; set; }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
-        _userMenager = userMenager;
+      
     }
 
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<IdentityRole>().HasData()
 
         modelBuilder.Entity<Project>().HasData(
             new Project {Id = 1, Name = "Project1", State = ProjectState.open}, 
