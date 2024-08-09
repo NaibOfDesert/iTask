@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iTask.Data;
 
@@ -10,9 +11,11 @@ using iTask.Data;
 namespace iTask.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240809055342_user2")]
+    partial class user2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -86,16 +89,16 @@ namespace iTask.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c689b991-aa67-4f7a-9157-b7d4e6f89ca9",
+                            Id = "798f824b-c93d-4f06-8482-83b8bd77028d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f6651b50-71d6-4365-a5e7-7904d1a922e9",
+                            ConcurrencyStamp = "3a91c963-f293-40a0-b8ce-098bb10a76ff",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAENe6t0s+8LMZ01k6h/9uQjiHD0H5zZt72zk26TOEnFrzn/PuR0kHyRMILGoXKNc+MA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENmMbgEqy+1EQFEKGo6DKMO9V8ZTXWj9TFfwT9deFMZupTGFbyKiJhPsqe15z1O3dg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6eb08eeb-fff1-4cc0-8734-faf2cb26d215",
+                            SecurityStamp = "89a5b467-fda6-42df-b1fa-fb6d69d3ea2b",
                             TwoFactorEnabled = false
                         });
                 });
