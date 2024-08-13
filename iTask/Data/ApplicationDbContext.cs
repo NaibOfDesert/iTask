@@ -27,7 +27,9 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         modelBuilder.Entity<Project>().HasData(
             new Project {Id = 1, Name = "Project1", State = ProjectState.open}, 
             new Project {Id = 2, Name = "Project2", State = ProjectState.open},
-            new Project {Id = 33, Name = "Project33", State = ProjectState.closed}
+            new Project {Id = 33, Name = "Project33", State = ProjectState.closed},
+            new Project {Id = 34, Name = "Project34", State = ProjectState.closed}
+
         );
         
         modelBuilder.Entity<Assignment>().HasData(
@@ -42,7 +44,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             Name = "Admin",
             Email = "admin@admin.com"
         };
-        PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
+        var passwordHasher = new PasswordHasher<ApplicationUser>();
         admin.PasswordHash = passwordHasher.HashPassword(admin, "sq37!aa1#");
 
     return admin; 

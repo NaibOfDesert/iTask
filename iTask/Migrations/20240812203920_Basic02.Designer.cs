@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iTask.Data;
 
@@ -11,9 +12,11 @@ using iTask.Data;
 namespace iTask.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240812203920_Basic02")]
+    partial class Basic02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -318,13 +321,13 @@ namespace iTask.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7dbeabaf-29ab-4f2b-848f-90c4fff94ef1",
+                            Id = "3874939c-87b6-4a09-8682-7ecc6acbfd22",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "40e87842-9b5f-43fd-b004-09083b469968",
+                            ConcurrencyStamp = "faad62c8-4ed5-4eb6-a6c0-e76c0574b4cb",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3eb432a7-ec42-4d2f-8a36-b8f7e3174d74",
+                            SecurityStamp = "3ca98649-c09e-4968-96da-1a2cfae163c6",
                             TwoFactorEnabled = false,
                             Name = "Admin"
                         });
