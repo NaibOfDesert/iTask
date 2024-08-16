@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace iTask.Data;
 
-public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<Project> Projects { get; set; }
-    public override DbSet<IdentityUser> Users { get; set; }
+    public override DbSet<ApplicationUser> Users { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -44,6 +44,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             Name = "Admin",
             Email = "admin@admin.com"
         };
+        
         var passwordHasher = new PasswordHasher<ApplicationUser>();
         admin.PasswordHash = passwordHasher.HashPassword(admin, "sq37!aa1#");
 

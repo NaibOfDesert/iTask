@@ -56,7 +56,15 @@ void SeedDatabase()
 {
     using (var scope = app.Services.CreateScope())
     {
-        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-        dbInitializer.Initialize();
+        try {
+            var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+
+            dbInitializer.Initialize();
+        }
+        catch (Exception ex){
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occured creating the DB");
+        }
+
     }
 }
