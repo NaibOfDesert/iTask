@@ -56,11 +56,11 @@ void SeedDatabase()
 {
     using (var scope = app.Services.CreateScope())
     {
+        var services = scope.ServiceProvider;
         try {
-            var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var db = services.GetRequiredService<ApplicationDbContext>();
 
-            dbInitializer.Initialize(db);
+            DbInitializer.Initialize(db);
         }
         catch (Exception ex){
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
