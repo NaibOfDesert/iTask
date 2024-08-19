@@ -1,5 +1,10 @@
+using iTask.Data;
+
 public interface IDbInitializer
 {
-    public void Initialize();
+
+    public void Initialize(ApplicationDbContext db){
+        
+    }
 
 }
