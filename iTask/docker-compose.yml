@@ -1,7 +1,5 @@
 # Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
 
-version: '3.4'
-
 services:
   itask:
     image: itask
@@ -24,10 +22,13 @@ services:
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: Passw0rd
+      USER: mssql
     ports: 
       - 1401:1433
     expose:
       - "5191"
+    volumes: 
+      - itaskdb:/var/opt/mssql/data"
     networks:
       - mynetwork
     restart: always
@@ -36,3 +37,5 @@ networks:
   mynetwork:
     driver: bridge
 
+volumes:
+  itaskdb:
