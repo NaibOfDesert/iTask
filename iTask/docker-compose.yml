@@ -21,8 +21,7 @@ services:
     platform: linux/amd64
     environment: 
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: Passw0rd
-      USER: mssql
+      SA_PASSWORD: "Passw0rd"
     ports: 
       - 1401:1433
     expose:
