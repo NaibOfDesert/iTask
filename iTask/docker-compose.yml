@@ -9,34 +9,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "5191:80"
-    volumes: 
-      - /var
-    depends_on:
-      - mssqlserver
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    networks:
-      - mynetwork
-  mssqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: mssqlserver
-    platform: linux/amd64
-    environment: 
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Passw0rd"
-    ports: 
-      - 1401:1433
-    expose:
-      - "5191"
-    volumes: 
-      - itaskdb:/var/opt/mssql/data"
-    networks:
-      - mynetwork
-    restart: always
-
-networks:
-  mynetwork:
-    driver: bridge
 
 volumes:
   itaskdb:
