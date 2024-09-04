@@ -20,10 +20,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         base.OnModelCreating(modelBuilder);
     
+        /*
         modelBuilder.Entity<ApplicationUser>().HasData(
             SeedAdmin()
         );
-
+        */
+        
         modelBuilder.Entity<Project>().HasData(
             new Project {Id = 1, Name = "Project1", State = ProjectState.open}, 
             new Project {Id = 2, Name = "Project2", State = ProjectState.open},
@@ -39,6 +41,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     }
 
+    /*
     private ApplicationUser SeedAdmin(){
         ApplicationUser admin = new ApplicationUser(){
             Name = "Admin",
@@ -50,6 +53,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     return admin; 
     }
+    */
 
 }
 
