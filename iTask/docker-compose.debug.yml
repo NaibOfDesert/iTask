@@ -6,11 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      args:
-        - configuration=Debug
     ports:
-      - 5191:80
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - "5191:80"
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
+

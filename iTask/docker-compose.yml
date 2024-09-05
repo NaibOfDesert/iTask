@@ -9,8 +9,3 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "5191:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-
-volumes:
-  itaskdb:
