@@ -11,3 +11,13 @@ services:
       dockerfile: iTask/Dockerfile
     ports:
       - 5191:5191
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: mssqlserver
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Passw0rd
+    ports: 
+      - 1433:1433
+    restart: always
