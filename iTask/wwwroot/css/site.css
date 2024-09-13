@@ -1,12 +1,16 @@
-﻿html {
-  font-size: 14px;
+﻿
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_bold.woff);
+  font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+html {
+  font-size: 12px;
+  font-family: Comfortaa;
+
 }
+
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -14,9 +18,18 @@
 
 html {
   position: relative;
-  min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+body {  
+  font-family: Comfortaa;
+  display: flex; 
+  min-height: 100vh;
+  background-color: rgb(0, 0, 0);
 }
+
+#nav-bar {
+  background-image: url("/img/nav-image-1.jpg");
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-color: rgb(51, 8, 81);
+  }

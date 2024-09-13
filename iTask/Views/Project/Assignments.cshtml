@@ -1,0 +1,38 @@
+@model List<Assignment>
+@{
+    ViewData["Title"] = "Project Page";
+}
+
+<h2 class="text-white"> Task List</h2>
+
+<div class="">
+    <table class="table table-responsive text-white">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">date start</th>
+                <th scope="col">date end</th>
+                <th scope="col">status</th>
+                <th scope="col">duration</th>
+
+            </tr>
+
+
+        </thead>
+
+        @foreach(var m in Model){
+            <tbody>
+                <tr> 
+                    <td scope="row">
+                        <a class="row-link" asp-area="" asp-controller="Project" asp-action="Details" asp-route-id="@m.Id">@m.Id</a>
+                    </td>
+                    <td scope="">@m.State</td>
+                    <td scope="">11</td>
+
+
+                </tr>
+            </tbody>
+        }
+    </table>
+ </div> 

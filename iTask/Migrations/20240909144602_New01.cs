@@ -3,12 +3,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+<<<<<<<< HEAD:iTask/Migrations/20240909144602_New01.cs
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace iTask.Migrations
 {
     /// <inheritdoc />
     public partial class New01 : Migration
+========
+namespace iTask.Migrations
+{
+    /// <inheritdoc />
+    public partial class Test : Migration
+>>>>>>>> main:iTask/Migrations/20240904144655_Test.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,12 +39,22 @@ namespace iTask.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+<<<<<<<< HEAD:iTask/Migrations/20240909144602_New01.cs
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+========
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+>>>>>>>> main:iTask/Migrations/20240904144655_Test.cs
                     SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -53,12 +70,33 @@ namespace iTask.Migrations
                 });
 
             migrationBuilder.CreateTable(
+<<<<<<<< HEAD:iTask/Migrations/20240909144602_New01.cs
+========
+                name: "Assignments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    State = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+>>>>>>>> main:iTask/Migrations/20240904144655_Test.cs
                 name: "Projects",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+<<<<<<<< HEAD:iTask/Migrations/20240909144602_New01.cs
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+========
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<int>(type: "int", nullable: false)
+>>>>>>>> main:iTask/Migrations/20240904144655_Test.cs
                 },
                 constraints: table =>
                 {
@@ -241,6 +279,12 @@ namespace iTask.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+<<<<<<<< HEAD:iTask/Migrations/20240909144602_New01.cs
+========
+                name: "Assignments");
+
+            migrationBuilder.DropTable(
+>>>>>>>> main:iTask/Migrations/20240904144655_Test.cs
                 name: "Projects");
 
             migrationBuilder.DropTable(

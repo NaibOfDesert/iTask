@@ -1,0 +1,26 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  itask:
+    image: itask
+    container_name: itask
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5191:80
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: mssqlserver
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Passw0rd
+    ports: 
+      - 1433:1433
+    restart: always
+
+
+

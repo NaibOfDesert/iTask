@@ -11,6 +11,7 @@ public class HomeController : Controller
 
 
     public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+    public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
     {
         _logger = logger;
         _unitOfWork = unitOfWork;
@@ -18,7 +19,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<Assignment> assignmentList = _unitOfWork.assignments.GetAll();
+        
+        return View(assignmentList);
     }
 
     public IActionResult Projects()

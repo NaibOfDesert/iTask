@@ -1,0 +1,37 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bi bi-house-fill h6"></i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index">
+                <i class="bi bi-clipboard-fill h6"></i>
+                Project List
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Assignments">
+                <i class="bi bi-view-list h6"></i>
+                Task List
+            </a>
+        </li>
+        <li>
+            <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Ranks">
+                <i class="bi bi-clipboard-pulse h6"></i>                    
+                Ranks
+            </a>
+        </li>
+    </ul>
+    <hr>
+}
+else {
+    <a class="d-flex text-white text-decoration-none"> Informations about portal</a>
+}
