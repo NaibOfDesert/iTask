@@ -8,7 +8,6 @@ public class Project
     public required string Name { get; set; }
     DateTime  DateStart { get; set; }
     DateTime  DateEnd { get; set; }
-    public required ProjectState State { get; set; }
     
     // Tast List
     // Manager

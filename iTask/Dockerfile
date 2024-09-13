@@ -12,10 +12,10 @@ USER appuser
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["iTask.csproj", "./"]
-RUN dotnet restore "iTask.csproj"
+COPY ["iTask/iTask.csproj", "iTask/"]
+RUN dotnet restore "iTask/iTask.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/iTask"
 RUN dotnet build "iTask.csproj" -c $configuration -o /app/build
 
 FROM build AS publish

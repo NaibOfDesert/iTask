@@ -9,11 +9,12 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly IUnitOfWork _unitOfWork;
 
+
+    public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
     public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
     {
         _logger = logger;
         _unitOfWork = unitOfWork;
-
     }
 
     public IActionResult Index()
@@ -23,7 +24,13 @@ public class HomeController : Controller
         return View(assignmentList);
     }
 
-    public IActionResult About()
+    public IActionResult Projects()
+    {
+        List<Project> projects = _unitOfWork.projects.GetAll();
+
+        return View(projects);
+    }
+    public IActionResult Privacy()
     {
         return View();
     }

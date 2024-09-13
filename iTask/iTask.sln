@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTask", "iTask.csproj", "{A3BE5080-42D5-4565-9CAA-87BDD641A6DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTask", "iTask.csproj", "{896E2BBA-B563-4829-AD2B-9FB41101A775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A3BE5080-42D5-4565-9CAA-87BDD641A6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3BE5080-42D5-4565-9CAA-87BDD641A6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3BE5080-42D5-4565-9CAA-87BDD641A6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3BE5080-42D5-4565-9CAA-87BDD641A6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896E2BBA-B563-4829-AD2B-9FB41101A775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896E2BBA-B563-4829-AD2B-9FB41101A775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896E2BBA-B563-4829-AD2B-9FB41101A775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896E2BBA-B563-4829-AD2B-9FB41101A775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BCD918DA-D409-49AF-870B-286AD49E3F89}
+		SolutionGuid = {7B0B7B6B-29B7-42C9-942D-02CBFF0C66F2}
 	EndGlobalSection
 EndGlobal
