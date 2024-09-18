@@ -1,9 +1,9 @@
 using iTask.Data;
+using Microsoft.AspNetCore.Identity;
 
 public interface IDbInitializer
 {
-
-    public static void Initialize(ApplicationDbContext db){
+    public void Initialize(){
         
     }
 

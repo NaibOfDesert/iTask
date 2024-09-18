@@ -4,18 +4,27 @@ using iTask.Data;
 
 public class DbInitializer : IDbInitializer
 { 
-    public static void Initialize(ApplicationDbContext db)
-    {
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly ApplicationDbContext _db; 
+
+    public DbInitializer(ApplicationDbContext db, UserManager<IdentityUser> userManager ,RoleManager<IdentityRole> roleManager){
+        _db = db;
+        _userManager = userManager;
+        _roleManager = roleManager;
+    }
+    public void Initialize()
+    {        
         try
         {
-            if(db.Database.GetPendingMigrations().Count() > 0)
+            if(_db.Database.GetPendingMigrations().Count() > 0)
             {
-                db.Database.Migrate();
+                _db.Database.Migrate();
             }
         }
-        catch (Exception) { }
-
-
+        catch (Exception ex) { }
+ 
+        
     }
 
 

@@ -9,13 +9,18 @@ using iTask.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// TODO: add try for dotnet run / docker compose
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+// cookies
+
+
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
@@ -61,8 +66,8 @@ void SeedDatabase()
         var services = scope.ServiceProvider;
         try {
             var db = services.GetRequiredService<ApplicationDbContext>();
-
-            DbInitializer.Initialize(db);
+            var dbInitializer = services.GetRequiredService<IDbInitializer>();
+            dbInitializer.Initialize();
         }
         catch (Exception ex){
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
