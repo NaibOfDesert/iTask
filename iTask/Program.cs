@@ -20,8 +20,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 // cookies
 
 
-
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -55,7 +55,7 @@ SeedDatabase();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+app.MapRazorPages();    
 
 app.Run();
 
