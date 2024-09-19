@@ -24,7 +24,12 @@ public class DbInitializer : IDbInitializer
         }
         catch (Exception ex) { }
  
-        
+        if(!_roleManager.RoleExistsAsync(Roles.RoleAdmin).GetAwaiter().GetResult()){
+            _roleManager.CreateAsync(new IdentityRole(Roles.RoleAdmin)).GetAwaiter().GetResult();
+            _roleManager.CreateAsync(new IdentityRole(Roles.RoleUser)).GetAwaiter().GetResult();
+
+            
+        }
     }
 
 
