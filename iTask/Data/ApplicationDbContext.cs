@@ -5,7 +5,9 @@ namespace iTask.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
+    public DbSet<AppUser> Users { get; set; }
     public DbSet<Project> Projects { get; set; }
+
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

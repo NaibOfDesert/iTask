@@ -30,6 +30,16 @@ public class DbInitializer : IDbInitializer
 
             
         }
+
+        _userManager.CreateAsync(new AppUser{
+            UserName = "Admin",
+            Id = 1
+        }, "Admin1!").GetAwaiter().GetResult(); 
+
+
+        AppUser user = _db.Users.FirstOrDefault(x => x.UserName == "Admin");
+
+
     }
 
 
