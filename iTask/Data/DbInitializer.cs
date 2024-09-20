@@ -38,9 +38,8 @@ public class DbInitializer : IDbInitializer
 
 
         AppUser user = _db.Users.FirstOrDefault(x => x.UserName == "Admin");
+        _userManager.AddToRoleAsync(user, Roles.RoleAdmin).GetAwaiter().GetResult();
 
-
+        //return;
     }
-
-
 }

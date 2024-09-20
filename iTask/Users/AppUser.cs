@@ -7,4 +7,6 @@ public class AppUser: IdentityUser{
     public string Name { get; set;}
     [Required]
     public int Id { get; set;}
+
+    
 }
