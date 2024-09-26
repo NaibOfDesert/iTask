@@ -5,8 +5,5 @@ public class AppUser: IdentityUser{
     
     [Required]
     public string Name { get; set;}
-    [Required]
-    public int Id { get; set;}
-
     
 }

@@ -33,7 +33,8 @@ public class DbInitializer : IDbInitializer
 
         _userManager.CreateAsync(new AppUser{
             UserName = "Admin",
-            Id = 1
+            Email = "admin@admin.com",
+            Name = "AdminName AdminLastName"
         }, "Admin1!").GetAwaiter().GetResult(); 
 
 
