@@ -32,9 +32,8 @@ public class DbInitializer : IDbInitializer
         }
 
         _userManager.CreateAsync(new AppUser{
-            UserName = "Admin",
+            UserName = "admin@admin.com",
             Email = "admin@admin.com",
-            Name = "AdminName AdminLastName"
         }, "Admin1!").GetAwaiter().GetResult(); 
 
 
