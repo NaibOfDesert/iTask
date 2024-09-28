@@ -15,14 +15,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// TODO: to fix 
+// ALTERNATIVE: with login/register/accesdenied views
 // builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 //    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-// builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
-// TODO: to check
-// builder.Services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders(); 
 builder.Services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>(); 
 
 
