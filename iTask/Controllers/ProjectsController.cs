@@ -27,5 +27,26 @@ public class ProjectsController : Controller
 
         return View(projects);
     }
+
+    public IActionResult Add(){
+
+
+        return View();
+    }
+
+    public IActionResult Details()
+    {
+        return View(); 
+    }
+
+    public IActionResult AddTask(){
+
+        return View();
+    }
+
+    public IActionResult DetailsTask(){
+
+        return View("Details(1)");
+    }
 }
 
