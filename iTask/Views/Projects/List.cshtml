@@ -1,8 +1,17 @@
 @model List<Project>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Projects";
 }
+
+
+@if (SignInManager.IsSignedIn(User)){
+ // TODO: add defentdenscies of admin ale signed projects to users.
+}
+
 
 <h1 class="text-dark text-center">Projects</h1>  
 <div class="">
