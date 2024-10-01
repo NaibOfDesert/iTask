@@ -39,6 +39,10 @@ public class ProjectsController : Controller
         return View(); 
     }
 
+    public IActionResult Edit(Project project){
+        return View(); 
+    }
+
     public IActionResult AddTask(){
 
         return View();
