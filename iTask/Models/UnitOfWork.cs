@@ -11,4 +11,8 @@ public class UnitOfWork : IUnitOfWork
         _db = db;
         projects = new ProjectRepository(db);
     }
+
+    public void Save (){
+        _db.SaveChanges();
+    }
 }

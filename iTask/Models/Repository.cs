@@ -14,6 +14,12 @@ public class Repository<T> : IRepository<T> where T : class
         _db = db;
         dbSet = db.Set<T>();
     }
+
+    public T GetById(int id){
+
+        return dbSet.FirstOrDefault(T t => t.Id == id);
+    }
+
     public List<T> GetAll()
     {
         IQueryable<T> query = dbSet; 

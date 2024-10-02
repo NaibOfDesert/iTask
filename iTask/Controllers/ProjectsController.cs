@@ -39,7 +39,15 @@ public class ProjectsController : Controller
         return View(); 
     }
 
+    public IActionResult Edit(int i){
+        Project project = _unitOfWork.projects.GetById(i); 
+        return View("Edit", project); 
+    }
+
     public IActionResult Edit(Project project){
+        
+
+
         return View(); 
     }
 
@@ -47,6 +55,7 @@ public class ProjectsController : Controller
 
         return View();
     }
+    
 
     public IActionResult DetailsTask(){
 
