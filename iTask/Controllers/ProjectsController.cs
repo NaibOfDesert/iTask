@@ -28,10 +28,9 @@ public class ProjectsController : Controller
         return View(projects);
     }
 
+    [HttpPost]
     public IActionResult Add()
     {
-
-
         return View();
     }
 
@@ -47,12 +46,12 @@ public class ProjectsController : Controller
         }
         return View(project); 
     }
+
     [HttpPost]
     public IActionResult Details(Project project)
     {
         return View(); 
     }
-
 
     public IActionResult Edit(int? id)
     {
