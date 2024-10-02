@@ -28,26 +28,48 @@ public class ProjectsController : Controller
         return View(projects);
     }
 
-    public IActionResult Add(){
+    public IActionResult Add()
+    {
 
 
         return View();
     }
 
-    public IActionResult Details()
+    public IActionResult Details(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
+        if (project == null){
+            return NotFound();
+        }
+        return View(project); 
+    }
+    [HttpPost]
+    public IActionResult Details(Project project)
     {
         return View(); 
     }
 
-    public IActionResult Edit(int i){
-        Project project = _unitOfWork.projects.GetById(i); 
-        return View("Edit", project); 
+
+    public IActionResult Edit(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
+        if (project == null){
+            return NotFound();
+        }
+        return View(project); 
     }
 
-    public IActionResult Edit(Project project){
-        
-
-
+    [HttpPost]
+    public IActionResult Edit(Project project)
+    {
         return View(); 
     }
 
