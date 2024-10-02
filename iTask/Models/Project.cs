@@ -6,14 +6,19 @@ public class Project
     [Key]
     public int Id { get; set; }
     public required string Name { get; set; }
-    DateTime  DateStart { get; set; }
-    DateTime  DateEnd { get; set; }
+    [Required]
+    public DateTime DateStart { get; set; } = DateTime.Now;
+    [Required]
+    public DateTime DateEnd { get; set; } = DateTime.Now.AddDays(20);
     
-    // Tast List
-    // Manager
+    public List<Task> Tasks { get; set; } = new List<Task>();
+
+    // Manager / Owner
     // UsersList
     
-
+    public int GetTaskCount(){
+        return Tasks.Count(); 
+    }
 
 
 }

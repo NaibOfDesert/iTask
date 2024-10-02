@@ -72,9 +72,24 @@ public class ProjectsController : Controller
         return View(); 
     }
 
-    public IActionResult AddTask(){
+    public IActionResult AddTask(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
+        if (project == null){
+            return NotFound();
+        }
 
-        return View();
+        // TODO: set indivudual id
+        Task tast = new Task{
+            Id = 77,
+            Name = "Task",
+            projectAffiliation = project 
+        };
+        return View("Details", project); 
     }
     
 

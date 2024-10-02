@@ -17,7 +17,7 @@ public class Repository<T> : IRepository<T> where T : class
     }
 
     // TOCHECK: Expression & Func to verify.
-    public T Get(Expression<Func<T, bool>> filter){
+    public T? Get(Expression<Func<T, bool>> filter){
 
         return _dbSet.Where(filter).FirstOrDefault();
     }
