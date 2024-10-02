@@ -14,4 +14,6 @@ public class Task
     public DateTime dateStart { get; set; } = DateTime.Now;
     [Required]
     public DateTime dateEnd { get; set;} = DateTime.Now.AddDays(7);
+    [Required]
+    public Project? projectAffiliation { get; set; } = null;
 }
