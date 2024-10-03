@@ -8,4 +8,7 @@ public interface IRepository <T> where T : class
     public T? Get(Expression<Func<T, bool>> filter);
     public List<T> GetAll(); 
 
+    public void Add(T entity);
+    public void Update(T entity);  
+    public void Remove(T entity);
 }

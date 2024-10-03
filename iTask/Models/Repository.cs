@@ -27,4 +27,17 @@ public class Repository<T> : IRepository<T> where T : class
         IQueryable<T> query = _dbSet; 
         return query.ToList();     
     }
+
+    public void Add(T entity)
+    {
+        _dbSet.Add(entity);
+    }
+    public void Update(T entity)
+    {
+        _dbSet.Update(entity);
+    }
+    public void Remove(T entity)
+    {
+        _dbSet.Remove(entity);
+    }
 }

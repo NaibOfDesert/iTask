@@ -11,14 +11,7 @@ public class Project
     [Required]
     public DateTime DateEnd { get; set; } = DateTime.Now.AddDays(20);
     
-    public List<Task> Tasks { get; set; } = new List<Task>();
-
     // Manager / Owner
     // UsersList
-    
-    public int GetTaskCount(){
-        return Tasks.Count(); 
-    }
-
 
 }

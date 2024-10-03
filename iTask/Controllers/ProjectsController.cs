@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using iTask.Models;
+using System.Linq.Expressions;
 
 namespace iTask.Controllers;
 
@@ -55,11 +56,7 @@ public class ProjectsController : Controller
 
     public IActionResult Edit(int? id)
     {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
+        Project? project = FindProject(id, x => x.Id == id);
         if (project == null){
             return NotFound();
         }
@@ -74,28 +71,36 @@ public class ProjectsController : Controller
 
     public IActionResult AddTask(int? id)
     {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
+        Project? project = FindProject(id, x => x.Id == id);
         if (project == null){
             return NotFound();
         }
 
-        // TODO: set indivudual id
         Task tast = new Task{
             Id = 77,
-            Name = "Task",
-            projectAffiliation = project 
+            IdProject = project.Id,
+            Name = "Task"
         };
-        return View("Details", project); 
+
+        _unitOfWork.tasks.Add(tast);
+        return View("Details", project);
     }
     
 
     public IActionResult DetailsTask(){
 
         return View("Details(1)");
+    }
+
+    public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
+    {
+        if (id == null || id == 0)
+        {
+            return null;
+        }
+        Project? project = _unitOfWork.projects.Get(filter); 
+        return project; 
+
     }
 }
 
