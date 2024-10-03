@@ -68,7 +68,12 @@ public class ProjectsController : Controller
     {
         return View(); 
     }
+    public IActionResult ListTask()
+    {
+        List<Task> tasks = _unitOfWork.tasks.GetAll();
 
+        return View(tasks);
+    }
     public IActionResult AddTask(int? id)
     {
         Project? project = FindProject(id, x => x.Id == id);

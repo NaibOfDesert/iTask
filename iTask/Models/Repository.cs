@@ -28,6 +28,9 @@ public class Repository<T> : IRepository<T> where T : class
         return query.ToList();     
     }
 
+    public int Count(Expression<Func<T, bool>> filter){
+        return _dbSet.Where(filter).Count();
+    }
     public void Add(T entity)
     {
         _dbSet.Add(entity);
