@@ -70,9 +70,9 @@ public class ProjectsController : Controller
     }
     public IActionResult ListAssignment()
     {
-        List<Task> tasks = _unitOfWork.assignments.GetAll();
+        List<Assignment> assignments = _unitOfWork.assignments.GetAll();
 
-        return View(tasks);
+        return View(assignments);
     }
     public IActionResult AddAssignment(int? id)
     {
