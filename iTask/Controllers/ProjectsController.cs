@@ -88,6 +88,7 @@ public class ProjectsController : Controller
         };
 
         _unitOfWork.assignments.Add(tast);
+        _unitOfWork.Save(); 
         return View("Details", project);
     }
     
