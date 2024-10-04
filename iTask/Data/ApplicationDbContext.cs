@@ -7,7 +7,7 @@ public class ApplicationDbContext : IdentityDbContext
 {
     public DbSet<AppUser> Users { get; set; }
     public DbSet<Project> Projects { get; set; }
-    public DbSet<Task> Tasks{ get; set; }
+    public DbSet<Assignment> Assignments{ get; set; }
 
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
