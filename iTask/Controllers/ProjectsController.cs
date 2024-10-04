@@ -82,7 +82,6 @@ public class ProjectsController : Controller
         }
 
         Assignment tast = new Assignment{
-            Id = 77,
             IdProject = project.Id,
             Name = "Task"
         };
