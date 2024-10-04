@@ -1,4 +1,4 @@
-public enum TaskStatus{
+public enum AssignmentStatus{
     ToDo,
     InProgress,
     Done

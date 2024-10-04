@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class Task
+public class Assignment
 {
     [Key]
     public int Id { get; set; }
@@ -11,7 +11,7 @@ public class Task
     public string Name { get; set; } = "Task";
     public string Description { get; set; } = "";
     [Required]
-    public TaskStatus taskStatus{ get; set; } = TaskStatus.ToDo; 
+    public AssignmentStatus assignmentStatus{ get; set; } = AssignmentStatus.ToDo; 
     [Required]
     public DateTime dateStart { get; set; } = DateTime.Now;
     [Required]

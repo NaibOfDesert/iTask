@@ -26,10 +26,10 @@ public class ApplicationDbContext : IdentityDbContext
         new Project {Id = 34, Name = "Project34"}
     );
 
-    modelBuilder.Entity<Task>().HasData(
-        new Task {Id = 1, IdProject = 1, Name = "Test1"},
-        new Task {Id = 2, IdProject = 2, Name = "Test2"},
-        new Task {Id = 3, IdProject = 2, Name = "Test33"}
+    modelBuilder.Entity<Assignment>().HasData(
+        new Assignment {Id = 1, IdProject = 1, Name = "Test1"},
+        new Assignment {Id = 2, IdProject = 2, Name = "Test2"},
+        new Assignment {Id = 3, IdProject = 2, Name = "Test33"}
     );
     }
 }

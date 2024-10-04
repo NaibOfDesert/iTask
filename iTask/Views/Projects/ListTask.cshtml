@@ -1,4 +1,4 @@
-@model List<Task>
+@model List<Assignment>
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -13,13 +13,13 @@
 }
 
 
-<h1 class="text-dark text-center">Tasks</h1>  
+<h1 class="text-dark text-center">Assignments</h1>  
 <div class="">
  <table class="table table-responsive text-dark">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">name</th>
+                <th scope="col">Id</th>
+                <th scope="col">Project id</th>
                 <th scope="col">date start</th>
                 <th scope="col">date end</th>
                 <th scope="col">status</th>
@@ -32,9 +32,12 @@
         @foreach(var m in Model){
             <tbody>
                 <tr> 
-                    
-
-
+                    <th scope="col">@m.Id</th>
+                    <th scope="col">@m.IdProject</th>
+                    <th scope="col">@m.dateStart</th>
+                    <th scope="col">@m.dateEnd</th>
+                    <th scope="col">@m.taskStatus.ToString()</th>
+                    <th scope="col">>>></th> 
                 </tr>
             </tbody>
         }

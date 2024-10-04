@@ -1,5 +1,4 @@
-public interface ITaskRepository : IRepository<Task>
+public interface IAssignmentRepository : IRepository<Assignment>
 {
-    void Update(Task task);
 
 }

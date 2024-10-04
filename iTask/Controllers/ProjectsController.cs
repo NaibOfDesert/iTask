@@ -68,31 +68,31 @@ public class ProjectsController : Controller
     {
         return View(); 
     }
-    public IActionResult ListTask()
+    public IActionResult ListAssignment()
     {
-        List<Task> tasks = _unitOfWork.tasks.GetAll();
+        List<Task> tasks = _unitOfWork.assignments.GetAll();
 
         return View(tasks);
     }
-    public IActionResult AddTask(int? id)
+    public IActionResult AddAssignment(int? id)
     {
         Project? project = FindProject(id, x => x.Id == id);
         if (project == null){
             return NotFound();
         }
 
-        Task tast = new Task{
+        Assignment tast = new Assignment{
             Id = 77,
             IdProject = project.Id,
             Name = "Task"
         };
 
-        _unitOfWork.tasks.Add(tast);
+        _unitOfWork.assignments.Add(tast);
         return View("Details", project);
     }
     
 
-    public IActionResult DetailsTask(){
+    public IActionResult DetailsAssignment(){
 
         return View("Details(1)");
     }
