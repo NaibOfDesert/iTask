@@ -31,6 +31,7 @@ public class ApplicationDbContext : IdentityDbContext
         new Assignment {Id = 2, IdProject = 2, Name = "Test2"},
         new Assignment {Id = 3, IdProject = 2, Name = "Test33"}
     );
+
     }
 }
 

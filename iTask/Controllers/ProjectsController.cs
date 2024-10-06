@@ -63,6 +63,21 @@ public class ProjectsController : Controller
         return View(project); 
     }
 
+    public IActionResult Remove(int? id)
+    {
+        // TODO: detele tasks
+
+
+        Project? project = FindProject(id, x => x.Id == id);
+        if (project == null){
+            return NotFound();
+        }
+        
+        _unitOfWork.projects.Remove(project);
+        _unitOfWork.Save(); 
+
+        return View("List"); 
+    }
     [HttpPost]
     public IActionResult Edit(Project project)
     {
@@ -118,8 +133,9 @@ public class ProjectsController : Controller
 
         return View("Details", project);
     }
-
-
+    public IActionResult WorkInProgress(){
+        return View(); 
+    }
     public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
     {
         if (id == null || id == 0)
