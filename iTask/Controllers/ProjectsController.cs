@@ -73,9 +73,6 @@ public class ProjectsController : Controller
     
     public IActionResult Remove(int? id)
     {
-        // TODO: detele tasks
-
-
         Project? project = FindProject(id, x => x.Id == id);
         if (project == null){
             return NotFound();
