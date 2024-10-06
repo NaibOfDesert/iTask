@@ -16,12 +16,7 @@ public class ProjectRepository : Repository<Project>, IProjectRepository
 
     public void RemoveAssignment(Project project, Assignment assignment)
     {
-    project.Assignments.Add(assignment); 
-    }
-
-    public int GetCount(Project project)
-    {
-        return project.Assignments.Count();
+    project.Assignments.Remove(assignment); 
     }
 
 

@@ -22,6 +22,7 @@ public class ProjectsController : Controller
         return View();
     }
 
+    #region Project
     public IActionResult List()
     {
         List<Project> projects = _unitOfWork.projects.GetAll();
@@ -45,6 +46,8 @@ public class ProjectsController : Controller
         if (project == null){
             return NotFound();
         }
+
+
         return View(project); 
     }
 
@@ -63,6 +66,11 @@ public class ProjectsController : Controller
         return View(project); 
     }
 
+    public IActionResult Edit(Project project)
+    {
+        return View(); 
+    }
+    
     public IActionResult Remove(int? id)
     {
         // TODO: detele tasks
@@ -78,19 +86,17 @@ public class ProjectsController : Controller
 
         return View("List"); 
     }
+    #endregion
+
+    #region Task
     [HttpPost]
-    public IActionResult Edit(Project project)
-    {
-        return View(); 
-    }
     public IActionResult ListAssignment()
     {
         List<Assignment> assignments = _unitOfWork.assignments.GetAll();
 
         return View(assignments);
-    }
+    }   
 
-        
     public IActionResult AddAssignment(int? id)
     {
         Project? project = FindProject(id, x => x.Id == id);
@@ -98,16 +104,20 @@ public class ProjectsController : Controller
             return NotFound();
         }
 
-        Assignment tast = new Assignment{
+        Assignment task = new Assignment{
             IdProject = project.Id,
             Name = "Task"
         };
 
-        _unitOfWork.assignments.Add(tast);
+        _unitOfWork.projects.AddAssignment(project, task);
+        _unitOfWork.projects.Update(project);
+        _unitOfWork.assignments.Add(task);
+
         _unitOfWork.Save(); 
+
+
         return View("Details", project);
     }
-    
 
     public IActionResult DetailsAssignment(){
 
@@ -133,9 +143,11 @@ public class ProjectsController : Controller
 
         return View("Details", project);
     }
+
     public IActionResult WorkInProgress(){
         return View(); 
     }
+
     public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
     {
         if (id == null || id == 0)
@@ -144,7 +156,6 @@ public class ProjectsController : Controller
         }
         Project? project = _unitOfWork.projects.Get(filter); 
         return project; 
-
     }
 
     public Assignment? FindAssignment (int? id, Expression<Func<Assignment, bool>> filter)
@@ -157,5 +168,6 @@ public class ProjectsController : Controller
         return assignment; 
 
     }
+    #endregion Task
 }
 
