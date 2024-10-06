@@ -1,4 +1,7 @@
+
 public class ProjectCard{
+    private IEnumerable<Assignment> enumerable;
+
     public Project Project { get; set; }
     public List<Assignment> Assignments { get; set; }
 

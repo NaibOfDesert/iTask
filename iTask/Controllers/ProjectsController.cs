@@ -47,8 +47,8 @@ public class ProjectsController : Controller
             return NotFound();
         }
 
-
-        return View(project); 
+        ProjectCard projectCard = new ProjectCard(project, _unitOfWork.assignments.GetAll(x => x.IdProject == project.Id)); 
+        return View(projectCard); 
     }
 
     [HttpPost]
@@ -81,6 +81,14 @@ public class ProjectsController : Controller
             return NotFound();
         }
         
+        List<Assignment> assignments= _unitOfWork.assignments.GetAll(x => x.IdProject == project.Id);
+        if (assignments != null)
+        {
+            foreach(Assignment a in assignments){
+                _unitOfWork.assignments.Remove(a);
+                project.Assignments.Remove(a);
+            }
+        }
         _unitOfWork.projects.Remove(project);
         _unitOfWork.Save(); 
 
@@ -89,7 +97,6 @@ public class ProjectsController : Controller
     #endregion
 
     #region Task
-    [HttpPost]
     public IActionResult ListAssignment()
     {
         List<Assignment> assignments = _unitOfWork.assignments.GetAll();
@@ -119,12 +126,13 @@ public class ProjectsController : Controller
         return View("Details", project);
     }
 
-    public IActionResult DetailsAssignment(){
-
-        return View("Details(1)");
+    public IActionResult DetailsAssignment()
+    {
+        return View(_unitOfWork.assignments.GetAll());
     }
 
-    public IActionResult RemoveAssignment (int? id) {
+    public IActionResult RemoveAssignment (int? id) 
+    {
         Assignment? assignment = FindAssignment(id, x => x.Id == id);
         
         if (assignment == null)

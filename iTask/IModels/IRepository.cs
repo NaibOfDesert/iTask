@@ -7,6 +7,7 @@ public interface IRepository <T> where T : class
 {
     public T? Get(Expression<Func<T, bool>> filter);
     public List<T> GetAll(); 
+    public List<T> GetAll(Expression<Func<T, bool>> filter);
 
     public int Count(Expression<Func<T, bool>> filter); 
 

@@ -27,6 +27,11 @@ public class Repository<T> : IRepository<T> where T : class
         IQueryable<T> query = _dbSet; 
         return query.ToList();     
     }
+    public List<T> GetAll(Expression<Func<T, bool>> filter)
+    {
+        IQueryable<T> query = _dbSet; 
+        return query.Where(filter).ToList();     
+    }
 
     public int Count(Expression<Func<T, bool>> filter){
         return _dbSet.Where(filter).Count();
