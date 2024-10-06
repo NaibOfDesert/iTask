@@ -27,6 +27,7 @@ public class HomeController : Controller
 
         return View(projects);
     }
+    
     public IActionResult Privacy()
     {
         return View();
