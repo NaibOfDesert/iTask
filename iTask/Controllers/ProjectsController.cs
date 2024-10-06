@@ -74,6 +74,8 @@ public class ProjectsController : Controller
 
         return View(assignments);
     }
+
+        
     public IActionResult AddAssignment(int? id)
     {
         Project? project = FindProject(id, x => x.Id == id);
@@ -97,6 +99,27 @@ public class ProjectsController : Controller
         return View("Details(1)");
     }
 
+    public IActionResult RemoveAssignment (int? id) {
+        Assignment? assignment = FindAssignment(id, x => x.Id == id);
+        
+        if (assignment == null)
+        {
+            return NotFound();
+        }
+        Project? project = FindProject(assignment.IdProject, x => x.Id == assignment.IdProject);
+        
+        if (assignment == null)
+        {
+            return NotFound();
+        }
+
+        _unitOfWork.assignments.Remove(assignment);
+        _unitOfWork.Save(); 
+
+        return View("Details", project);
+    }
+
+
     public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
     {
         if (id == null || id == 0)
@@ -105,6 +128,17 @@ public class ProjectsController : Controller
         }
         Project? project = _unitOfWork.projects.Get(filter); 
         return project; 
+
+    }
+
+    public Assignment? FindAssignment (int? id, Expression<Func<Assignment, bool>> filter)
+    {
+        if (id == null || id == 0)
+        {
+            return null;
+        }
+        Assignment? assignment = _unitOfWork.assignments.Get(filter); 
+        return assignment; 
 
     }
 }
