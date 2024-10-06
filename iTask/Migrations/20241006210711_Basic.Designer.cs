@@ -12,8 +12,8 @@ using iTask.Data;
 namespace iTask.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241006145509_ProjectTastk")]
-    partial class ProjectTastk
+    [Migration("20241006210711_Basic")]
+    partial class Basic
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,8 +71,8 @@ namespace iTask.Migrations
                             IdProject = 1,
                             Name = "Test1",
                             assignmentStatus = 0,
-                            dateEnd = new DateTime(2024, 10, 13, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3110),
-                            dateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3110)
+                            dateEnd = new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180),
+                            dateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(170)
                         },
                         new
                         {
@@ -81,18 +81,18 @@ namespace iTask.Migrations
                             IdProject = 2,
                             Name = "Test2",
                             assignmentStatus = 0,
-                            dateEnd = new DateTime(2024, 10, 13, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3110),
-                            dateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3110)
+                            dateEnd = new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180),
+                            dateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180)
                         },
                         new
                         {
                             Id = 3,
                             Description = "",
-                            IdProject = 2,
-                            Name = "Test33",
+                            IdProject = 3,
+                            Name = "Test3",
                             assignmentStatus = 0,
-                            dateEnd = new DateTime(2024, 10, 13, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3120),
-                            dateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3120)
+                            dateEnd = new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180),
+                            dateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180)
                         });
                 });
 
@@ -332,30 +332,30 @@ namespace iTask.Migrations
                         new
                         {
                             Id = 1,
-                            DateEnd = new DateTime(2024, 10, 26, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3020),
-                            DateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(2960),
-                            Name = "Project1"
+                            DateEnd = new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(80),
+                            DateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(30),
+                            Name = "BasicProject"
                         },
                         new
                         {
                             Id = 2,
-                            DateEnd = new DateTime(2024, 10, 26, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
-                            DateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
+                            DateEnd = new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90),
+                            DateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90),
                             Name = "Project2"
                         },
                         new
                         {
-                            Id = 33,
-                            DateEnd = new DateTime(2024, 10, 26, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
-                            DateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
-                            Name = "Project33"
+                            Id = 3,
+                            DateEnd = new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100),
+                            DateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100),
+                            Name = "Project3"
                         },
                         new
                         {
-                            Id = 34,
-                            DateEnd = new DateTime(2024, 10, 26, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
-                            DateStart = new DateTime(2024, 10, 6, 16, 55, 9, 727, DateTimeKind.Local).AddTicks(3030),
-                            Name = "Project34"
+                            Id = 4,
+                            DateEnd = new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100),
+                            DateStart = new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100),
+                            Name = "Project4"
                         });
                 });
 

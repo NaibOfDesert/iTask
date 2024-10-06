@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace iTask.Migrations
 {
     /// <inheritdoc />
-    public partial class New01 : Migration
+    public partial class Basic : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,8 @@ namespace iTask.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -58,7 +60,9 @@ namespace iTask.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,15 +175,49 @@ namespace iTask.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Assignments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdProject = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    assignmentStatus = table.Column<int>(type: "int", nullable: false),
+                    dateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProjectId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Assignments_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
-                table: "Projects",
-                columns: new[] { "Id", "Name" },
+                table: "Assignments",
+                columns: new[] { "Id", "Description", "IdProject", "Name", "ProjectId", "assignmentStatus", "dateEnd", "dateStart" },
                 values: new object[,]
                 {
-                    { 1, "Project1" },
-                    { 2, "Project2" },
-                    { 33, "Project33" },
-                    { 34, "Project34" }
+                    { 1, "", 1, "Test1", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(170) },
+                    { 2, "", 2, "Test2", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180) },
+                    { 3, "", 3, "Test3", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "Id", "DateEnd", "DateStart", "Name" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(80), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(30), "BasicProject" },
+                    { 2, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90), "Project2" },
+                    { 3, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), "Project3" },
+                    { 4, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), "Project4" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -220,6 +258,11 @@ namespace iTask.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assignments_ProjectId",
+                table: "Assignments",
+                column: "ProjectId");
         }
 
         /// <inheritdoc />
@@ -241,13 +284,16 @@ namespace iTask.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Projects");
+                name: "Assignments");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
         }
     }
 }
