@@ -38,8 +38,8 @@
                 <tr> 
                     <th scope="col">@m.Id</th>
                     <th scope="col">@m.IdProject</th>
-                    <th scope="col">@m.dateStart</th>
-                    <th scope="col">@m.dateEnd</th>
+                    <th scope="col">@m.dateStart.ToString("dd/MM/yyyy")</th>
+                    <th scope="col">@m.dateEnd.ToString("dd/MM/yyyy")</th>
                     <th scope="col">@m.assignmentStatus.ToString()</th>
                     <th scope="col">>>></th> 
                     <th scope="col">
@@ -58,6 +58,3 @@
     </table>
     <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="1"> Add Task</a>
 </div> 
-
-
-<i class="bi bi-trash"></i>
