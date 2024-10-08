@@ -153,6 +153,34 @@ public class ProjectsController : Controller
         return View(); 
     }
 
+    public IActionResult AssignmentUpgrade(int? id)
+    {
+        if(id == null || id == 0)
+        {
+            return NotFound();
+        }
+
+        Assignment? assignment = FindAssignment(id, x => x.Id == id);
+        
+        if (assignment == null)
+        {
+            return NotFound();
+        }
+        Project? project = FindProject(assignment.IdProject, x => x.Id == assignment.IdProject);
+        
+        if (assignment == null)
+        {
+            return NotFound();
+        }
+        // TODO: refresh
+        return View();
+    }
+
+public IActionResult AssignmentDowngrade(int? id)
+    {
+       
+        return View();
+    }
     public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
     {
         if (id == null || id == 0)

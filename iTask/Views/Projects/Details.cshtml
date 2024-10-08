@@ -20,7 +20,47 @@
         </tbody>
     </table>
      
-        
+    <table class="table text-dark" style="border-color: black">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">date start</th>
+                <th scope="col">date end</th>
+                <th scope="col">status</th>
+                <th scope="col">status</th>  
+
+            </tr>
+
+
+        </thead>
+        @foreach(var a in Model.Assignments){
+            <tbody>
+                <tr> 
+                    <td scope="">@a.Id</td>
+                    
+                    <td >@a.Name</td>
+                    <td scope="">@a.dateStart.ToString("dd/MM/yyyy")</td>
+                    <td scope="">@a.dateEnd.ToString("dd/MM/yyyy")</td>
+                    <td scope="">@a.assignmentStatus.ToString()</td>
+                    <td scope="">                    
+                        @if(a.assignmentStatus == AssignmentStatus.InProgress || a.assignmentStatus == AssignmentStatus.Done ){
+                            <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">back</a>
+                        }
+
+                    </td>
+                    <td scope="">                    
+                        @if(a.assignmentStatus == AssignmentStatus.ToDo || a.assignmentStatus == AssignmentStatus.InProgress){
+                            <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">>>></a>
+                        }
+
+                    </td>
+
+
+                </tr>
+            </tbody>
+        }
+    </table>
 
 
 </div>
