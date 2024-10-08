@@ -153,33 +153,30 @@ public class ProjectsController : Controller
         return View(); 
     }
 
-    public IActionResult AssignmentUpgrade(int? id)
+    public IActionResult AssignmentUpgrade(int id)
     {
-        if(id == null || id == 0)
-        {
-            return NotFound();
-        }
+        Assignment assignment = FindAssignment(id); 
+        if(assignment.assignmentStatus == AssignmentStatus.ToDo)
+            assignment.assignmentStatus = AssignmentStatus.InProgress; 
+        else assignment.assignmentStatus = AssignmentStatus.Done; 
 
-        Assignment? assignment = FindAssignment(id);
-        
-        if (assignment == null)
-        {
-            return NotFound();
-        }
-        Project? project = FindProject(assignment.IdProject);
-        
-        if (assignment == null)
-        {
-            return NotFound();
-        }
-        // TODO: refresh
-        return View();
+        _unitOfWork.assignments.Update(assignment);
+        _unitOfWork.Save();
+
+        return View("Details", assignment.IdProject);
     }
 
-public IActionResult AssignmentDowngrade(int? id)
+public IActionResult AssignmentDowngrade(int id)
     {
-       
-        return View();
+        Assignment assignment = FindAssignment(id); 
+        if(assignment.assignmentStatus == AssignmentStatus.Done)
+            assignment.assignmentStatus = AssignmentStatus.InProgress; 
+        else assignment.assignmentStatus = AssignmentStatus.ToDo; 
+
+        _unitOfWork.assignments.Update(assignment);
+        _unitOfWork.Save(); 
+
+        return View("Details", assignment.IdProject);
     }
     public Project? FindProject(int? id)
     {
