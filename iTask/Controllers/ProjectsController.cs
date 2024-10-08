@@ -59,7 +59,7 @@ public class ProjectsController : Controller
 
     public IActionResult Edit(int? id)
     {
-        Project? project = FindProject(id, x => x.Id == id);
+        Project? project = FindProject(id);
         if (project == null){
             return NotFound();
         }
@@ -73,7 +73,7 @@ public class ProjectsController : Controller
     
     public IActionResult Remove(int? id)
     {
-        Project? project = FindProject(id, x => x.Id == id);
+        Project? project = FindProject(id);
         if (project == null){
             return NotFound();
         }
@@ -103,7 +103,7 @@ public class ProjectsController : Controller
 
     public IActionResult AddAssignment(int? id)
     {
-        Project? project = FindProject(id, x => x.Id == id);
+        Project? project = FindProject(id);
         if (project == null){
             return NotFound();
         }
@@ -130,13 +130,13 @@ public class ProjectsController : Controller
 
     public IActionResult RemoveAssignment (int? id) 
     {
-        Assignment? assignment = FindAssignment(id, x => x.Id == id);
+        Assignment? assignment = FindAssignment(id);
         
         if (assignment == null)
         {
             return NotFound();
         }
-        Project? project = FindProject(assignment.IdProject, x => x.Id == assignment.IdProject);
+        Project? project = FindProject(assignment.IdProject);
         
         if (assignment == null)
         {
@@ -160,13 +160,13 @@ public class ProjectsController : Controller
             return NotFound();
         }
 
-        Assignment? assignment = FindAssignment(id, x => x.Id == id);
+        Assignment? assignment = FindAssignment(id);
         
         if (assignment == null)
         {
             return NotFound();
         }
-        Project? project = FindProject(assignment.IdProject, x => x.Id == assignment.IdProject);
+        Project? project = FindProject(assignment.IdProject);
         
         if (assignment == null)
         {
@@ -181,23 +181,23 @@ public IActionResult AssignmentDowngrade(int? id)
        
         return View();
     }
-    public Project? FindProject(int? id, Expression<Func<Project, bool>> filter)
+    public Project? FindProject(int? id)
     {
         if (id == null || id == 0)
         {
             return null;
         }
-        Project? project = _unitOfWork.projects.Get(filter); 
+        Project? project = _unitOfWork.projects.Get(x => x.Id == id); 
         return project; 
     }
 
-    public Assignment? FindAssignment (int? id, Expression<Func<Assignment, bool>> filter)
+    public Assignment? FindAssignment (int? id)
     {
         if (id == null || id == 0)
         {
             return null;
         }
-        Assignment? assignment = _unitOfWork.assignments.Get(filter); 
+        Assignment? assignment = _unitOfWork.assignments.Get(x => x.Id == id); 
         return assignment; 
 
     }
