@@ -121,8 +121,13 @@ public class ProjectsController : Controller
         return View("Details", project);
     }
 
-    public IActionResult DetailsAssignment()
+    public IActionResult EditAssignment()
     {
+        
+
+
+
+
         return View(_unitOfWork.assignments.GetAll());
     }
 
@@ -141,6 +146,7 @@ public class ProjectsController : Controller
             return NotFound();
         }
         
+        // TOFIX:
         int idProject = assignment.IdProject;
 
         _unitOfWork.assignments.Remove(assignment);
@@ -159,9 +165,12 @@ public class ProjectsController : Controller
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save();
 
-        int idProject = assignment.IdProject;
+        int? idProject = assignment.IdProject;
 
-        return RedirectToAction("Details", new {id = idProject});
+        if(idProject.HasValue){
+            return RedirectToAction("Details", new {id = idProject});
+        } 
+        else return RedirectToAction("List");
     }
 
 public IActionResult AssignmentDowngrade(int id)
@@ -174,9 +183,11 @@ public IActionResult AssignmentDowngrade(int id)
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save(); 
 
-        int idProject = assignment.IdProject;
-
-        return RedirectToAction("Details", new {id = idProject});
+        int? idProject = assignment.IdProject;
+        if(idProject.HasValue){
+            return RedirectToAction("Details", new {id = idProject});
+        } 
+        else return RedirectToAction("List");
     }
     public Project? FindProject(int? id)
     {
