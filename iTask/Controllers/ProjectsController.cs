@@ -89,7 +89,8 @@ public class ProjectsController : Controller
         _unitOfWork.projects.Remove(project);
         _unitOfWork.Save(); 
 
-        return View("List"); 
+
+        return RedirectToAction("List"); 
     }
     #endregion
 
@@ -104,9 +105,6 @@ public class ProjectsController : Controller
     public IActionResult AddAssignment(int? id)
     {
         Project? project = FindProject(id);
-        if (project == null){
-            return NotFound();
-        }
 
         Assignment task = new Assignment{
             IdProject = project.Id,
@@ -142,15 +140,13 @@ public class ProjectsController : Controller
         {
             return NotFound();
         }
+        
+        int idProject = assignment.IdProject;
 
         _unitOfWork.assignments.Remove(assignment);
         _unitOfWork.Save(); 
 
-        return View("Details", project);
-    }
-
-    public IActionResult WorkInProgress(){
-        return View(); 
+        return RedirectToAction("Details", new {id = idProject});
     }
 
     public IActionResult AssignmentUpgrade(int id)
@@ -163,7 +159,9 @@ public class ProjectsController : Controller
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save();
 
-        return View("Details", assignment.IdProject);
+        int idProject = assignment.IdProject;
+
+        return RedirectToAction("Details", new {id = idProject});
     }
 
 public IActionResult AssignmentDowngrade(int id)
@@ -176,7 +174,9 @@ public IActionResult AssignmentDowngrade(int id)
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save(); 
 
-        return View("Details", assignment.IdProject);
+        int idProject = assignment.IdProject;
+
+        return RedirectToAction("Details", new {id = idProject});
     }
     public Project? FindProject(int? id)
     {
@@ -199,5 +199,10 @@ public IActionResult AssignmentDowngrade(int id)
 
     }
     #endregion Task
+
+    public IActionResult WorkInProgress()
+    {
+        return View(); 
+    }
 }
 

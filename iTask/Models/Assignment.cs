@@ -4,8 +4,7 @@ public class Assignment
 {
     [Key]
     public int Id { get; set; }
-    [Required]
-    public int IdProject{ get; set; }
+    public int? IdProject{ get; set; }
     [Required]
     [StringLength(100)]
     public string Name { get; set; } = "Task";
