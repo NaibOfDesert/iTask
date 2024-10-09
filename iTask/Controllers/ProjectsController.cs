@@ -104,21 +104,41 @@ public class ProjectsController : Controller
 
     public IActionResult AddAssignment(int? id)
     {
-        Project? project = FindProject(id);
+        Project? project = FindProject(id); 
+        Assignment task; 
 
-        Assignment task = new Assignment{
-            IdProject = project.Id,
-            Name = "Task"
-        };
+        if( id == null)
+        {
+            task = new Assignment
+            {
+                IdProject = id,
+                Name = "Task"
+            };
+        } 
+        else 
+        {   
+ 
+            task = new Assignment
+            {
+                IdProject = id,
+                Name = "Task"
+            };
 
-        _unitOfWork.projects.AddAssignment(project, task);
-        _unitOfWork.projects.Update(project);
+            _unitOfWork.projects.AddAssignment(project, task);
+            _unitOfWork.projects.Update(project);
+        }
+
         _unitOfWork.assignments.Add(task);
 
         _unitOfWork.Save(); 
 
+        if (id == null )
+        {
+            return RedirectToAction("ListAssignment");
 
+        }
         return View("Details", project);
+
     }
 
     public IActionResult EditAssignment()
@@ -141,13 +161,7 @@ public class ProjectsController : Controller
         }
         Project? project = FindProject(assignment.IdProject);
         
-        if (assignment == null)
-        {
-            return NotFound();
-        }
-        
-        // TOFIX:
-        int idProject = assignment.IdProject;
+        int? idProject = assignment.IdProject;
 
         _unitOfWork.assignments.Remove(assignment);
         _unitOfWork.Save(); 
