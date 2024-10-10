@@ -35,6 +35,15 @@ public class ProjectsController : Controller
         return View();
     }
 
+    [HttpPost]
+    public IActionResult Add(Project project)
+    {
+        _unitOfWork.projects.Add(project);
+        _unitOfWork.Save();
+
+        return RedirectToAction("List");
+    }
+
     public IActionResult Details(int? id)
     {
         if (id == null || id == 0)
