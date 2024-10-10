@@ -104,41 +104,24 @@ public class ProjectsController : Controller
 
     public IActionResult AddAssignment(int? id)
     {
-        Project? project = FindProject(id); 
-        Assignment task; 
+        Project project = FindProject(id);
 
-        if( id == null)
-        {
-            task = new Assignment
-            {
+        Assignment task = new Assignment{
                 IdProject = id,
                 Name = "Task"
             };
-        } 
-        else 
-        {   
- 
-            task = new Assignment
-            {
-                IdProject = id,
-                Name = "Task"
-            };
-
+        
+        if (project != null){
             _unitOfWork.projects.AddAssignment(project, task);
             _unitOfWork.projects.Update(project);
         }
-
         _unitOfWork.assignments.Add(task);
-
         _unitOfWork.Save(); 
 
-        if (id == null )
-        {
-            return RedirectToAction("ListAssignment");
-
+        if (project != null){
+            return RedirectToAction("Details", new {id = project.Id});
         }
-        return View("Details", project);
-
+        return RedirectToAction("ListAssignment");
     }
 
     public IActionResult EditAssignment()
@@ -155,18 +138,18 @@ public class ProjectsController : Controller
     {
         Assignment? assignment = FindAssignment(id);
         
-        if (assignment == null)
-        {
+        if (assignment == null){
             return NotFound();
         }
         Project? project = FindProject(assignment.IdProject);
         
-        int? idProject = assignment.IdProject;
-
         _unitOfWork.assignments.Remove(assignment);
         _unitOfWork.Save(); 
 
-        return RedirectToAction("Details", new {id = idProject});
+        if (project != null){
+            return RedirectToAction("Details", new {id = project.Id});
+        }
+        return RedirectToAction("ListAssignment");
     }
 
     public IActionResult AssignmentUpgrade(int id)

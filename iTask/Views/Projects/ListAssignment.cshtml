@@ -25,10 +25,7 @@
                 <th scope="col">status</th>
                 <th scope="col">a</th>  
                 <th scope="col">edit</th>  
-
                 <th scope="col">remove</th>  
-
-
             </tr>
 
 
@@ -37,7 +34,12 @@
             <tbody>
                 <tr> 
                     <th scope="col">@m.Id</th>
-                    <th scope="col">@m.IdProject</th>
+                    <th scope="col">
+                        @if(m.IdProject == null){
+                            <a>999</a>
+                        }
+                        else @m.IdProject
+                    </th>
                     <th scope="col">@m.dateStart.ToString("dd/MM/yyyy")</th>
                     <th scope="col">@m.dateEnd.ToString("dd/MM/yyyy")</th>
                     <th scope="col">@m.assignmentStatus.ToString()</th>
@@ -56,5 +58,5 @@
             </tbody>
         }
     </table>
-    <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="1"> Add Task</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="null"> Add Task</a>
 </div> 
