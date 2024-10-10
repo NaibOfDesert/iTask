@@ -7,7 +7,7 @@
         <thead>
         </thead>
         <tbody>
-            <tr> 
+            <tr class="clicable-row"> 
                 <td scope="">@Model.Project.Id . @Model.Project.Name</td>
                 <td scope="">@Model.Project.DateStart - @Model.Project.DateEnd</td>
                 <td scope="">@Model.Project.Assignments.Count()</td>
@@ -29,17 +29,16 @@
                 <th scope="col">date end</th>
                 <th scope="col">status</th>
                 <th scope="col">status</th>  
+                <th scope="col">status</th>  
+                <th scope="col">status</th>  
 
             </tr>
-
-
         </thead>
         @foreach(var a in Model.Assignments){
             <tbody>
                 <tr> 
                     <td scope="">@a.Id</td>
-                    
-                    <td >@a.Name</td>
+                    <td scope="">@a.Name</td>
                     <td scope="">@a.dateStart.ToString("dd/MM/yyyy")</td>
                     <td scope="">@a.dateEnd.ToString("dd/MM/yyyy")</td>
                     <td scope="">@a.assignmentStatus.ToString()</td>
@@ -47,13 +46,16 @@
                         @if(a.assignmentStatus == AssignmentStatus.InProgress || a.assignmentStatus == AssignmentStatus.Done ){
                             <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">back</a>
                         }
-
                     </td>
                     <td scope="">                    
                         @if(a.assignmentStatus == AssignmentStatus.ToDo || a.assignmentStatus == AssignmentStatus.InProgress){
                             <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">>>></a>
                         }
-
+                    </td>
+                    <td scope="">                    
+                        <a class="" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-trash"></i>
+                        </a>
                     </td>
 
 
@@ -64,7 +66,7 @@
 
 
 </div>
-<a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddTask" asp-route-id="@Model.Project.Id"> 
+<a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="@Model.Project.Id"> 
     <i class="bi bi-plus-square">Task</i> 
 </a>
 <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="Edit" asp-route-id="@Model.Project.Id">

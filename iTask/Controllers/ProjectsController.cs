@@ -30,7 +30,6 @@ public class ProjectsController : Controller
         return View(projects);
     }
 
-    [HttpPost]
     public IActionResult Add()
     {
         return View();
