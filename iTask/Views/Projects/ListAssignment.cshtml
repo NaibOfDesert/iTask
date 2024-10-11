@@ -45,9 +45,17 @@
                     <th scope="col">@m.assignmentStatus.ToString()</th>
                     <th scope="col">>>></th> 
                     <th scope="col">
-                        <a class="" asp-area="" asp-controller="Projects" asp-action="WorkInProgress" asp-route-id="@m.Id">
-                            <i class="bi bi-pen"></i>
-                        </a>
+                        @if(m.IdProject != null){
+                            <a class="" asp-area="" asp-controller="Projects" asp-action="WorkInProgress" asp-route-id="@m.Id">
+                                <i class="bi bi-pen"></i>
+                            </a>
+                        } 
+                        else {
+                            <a class="" asp-area="" asp-controller="Projects" asp-action="EditAssignmentNoAs" asp-route-id="@m.Id">
+                                <i class="bi bi-pen"></i>
+                            </a>
+                        }
+
                     </th> 
                     <th scope="col">
                         <a class="" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@m.Id">
