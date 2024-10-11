@@ -142,6 +142,18 @@ public class ProjectsController : Controller
         return View(_unitOfWork.assignments.GetAll());
     }
 
+    public IActionResult EditAssignmentNoAs(int id)
+    {
+        AssignmentNoAsCard assignmentNoAsCard = new AssignmentNoAsCard(){
+            Assignment = _unitOfWork.assignments.Get(x => x.Id == id),
+            Projects = _unitOfWork.projects.GetAll() 
+        };
+
+
+
+        return View(assignmentNoAsCard);
+    }
+
     public IActionResult RemoveAssignment (int? id) 
     {
         Assignment? assignment = FindAssignment(id);
