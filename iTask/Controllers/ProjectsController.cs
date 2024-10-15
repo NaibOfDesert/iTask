@@ -77,7 +77,10 @@ public class ProjectsController : Controller
     [HttpPost]
     public IActionResult Edit(Project project)
     {
-        return View(); 
+        _unitOfWork.projects.Update(project);
+        _unitOfWork.Save();
+
+        return RedirectToAction("Details", new { id = project.Id });
     }
     
     public IActionResult Remove(int? id)
