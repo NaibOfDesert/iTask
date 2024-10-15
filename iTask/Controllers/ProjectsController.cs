@@ -165,10 +165,10 @@ public class ProjectsController : Controller
     }
 
     [HttpPost]
-    public IActionResult EditAssignmentNoAs(Assignment assignmentNoAsCard)
+    public IActionResult EditAssignmentNoAs(AssignmentNoAsCard assignmentNoAsCard)
     {
-
-
+        _unitOfWork.assignments.Update(assignmentNoAsCard.Assignment);
+        _unitOfWork.Save();
         return View();
     }
 

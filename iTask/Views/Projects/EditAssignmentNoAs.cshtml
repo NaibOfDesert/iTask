@@ -1,5 +1,45 @@
 @model AssignmentNoAsCard
+Edit
+<h1>@Model.Assignment.Id: @Model.Assignment.Name</h1>
 
-<h1>
-Edit AssignmentNoAs
-</h1>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+<form method="post" class="row">
+    <div class="border p-3">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-floating py-2 col-12">
+            <input asp-for="Assignment.Name" class="form-control border-0 shadow" />
+            <label asp-for="Assignment.Name" class="ms-2"></label>
+            <span asp-validation-for="Assignment.Name" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-outline-primary border form-control">Save</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Projects" asp-action="ListAssignment" class="btn btn-outline-secondary border form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
