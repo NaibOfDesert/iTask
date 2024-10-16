@@ -54,7 +54,7 @@ public class ProjectsController : Controller
         if (project == null){
             return NotFound();
         }
-
+        
         ProjectCard projectCard = new ProjectCard(project, _unitOfWork.assignments.GetAll(x => x.IdProject == project.Id)); 
         return View(projectCard); 
     }
