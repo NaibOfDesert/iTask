@@ -138,19 +138,17 @@ public class ProjectsController : Controller
 
     public IActionResult EditAssignment(int id)
     {
-        AssignmentNoAsCard assignmentNoAsCard = new AssignmentNoAsCard(){
-            Assignment = _unitOfWork.assignments.Get(x => x.Id == id),
-            Projects = _unitOfWork.projects.GetAll() 
-        };
-        return View(assignmentNoAsCard);
+        Assignment assignment = _unitOfWork.assignments.Get(x => x.Id == id);
+        return View(assignment);
     }
 
     [HttpPost]
-    public IActionResult EditAssignment(Assignment assignmentNoAsCard)
+    public IActionResult EditAssignment(Assignment assignment)
     {
+        _unitOfWork.assignments.Update(assignment);
+        _unitOfWork.Save();
 
-
-        return View();
+        return RedirectToAction("Details", new {id = assignment.IdProject});
     }
     public IActionResult EditAssignmentNoAs(int id)
     {
@@ -158,9 +156,6 @@ public class ProjectsController : Controller
             Assignment = _unitOfWork.assignments.Get(x => x.Id == id),
             Projects = _unitOfWork.projects.GetAll() 
         };
-
-
-
         return View(assignmentNoAsCard);
     }
 
@@ -169,7 +164,7 @@ public class ProjectsController : Controller
     {
         _unitOfWork.assignments.Update(assignmentNoAsCard.Assignment);
         _unitOfWork.Save();
-        return View();
+        return RedirectToAction("Details", new {id = assignmentNoAsCard.Assignment.IdProject});
     }
 
     public IActionResult RemoveAssignment (int? id) 

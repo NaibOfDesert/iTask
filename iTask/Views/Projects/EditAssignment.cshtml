@@ -1,2 +1,25 @@
+@model Assignment 
 
+Edit
+<h1>@Model.Id: @Model.Name</h1>
 
+<form method="post" class="row">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-floating py-2 col-12">
+            <input asp-for="@Model.Name" class="form-control border-0 shadow" />
+            <label asp-for="@Model.Name" class="ms-2"></label>
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-outline-primary border form-control">Save</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Projects" asp-action="ListAssignment" class="btn btn-outline-secondary border form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
