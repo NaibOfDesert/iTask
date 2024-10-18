@@ -162,6 +162,9 @@ public class ProjectsController : Controller
     [HttpPost]
     public IActionResult EditAssignmentNoAs(AssignmentNoAsCard assignmentNoAsCard)
     {
+        if(assignmentNoAsCard.Assignment.IdProject == null){
+            return NotFound(); 
+        }
         _unitOfWork.assignments.Update(assignmentNoAsCard.Assignment);
         _unitOfWork.Save();
         return RedirectToAction("Details", new {id = assignmentNoAsCard.Assignment.IdProject});
