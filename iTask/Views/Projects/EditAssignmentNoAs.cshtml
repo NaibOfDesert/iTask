@@ -19,14 +19,18 @@ Edit
         
         <div class="form-floating py-2 col-12">
             <label asp-for="Assignment.IdProject" class="ms-2"></label>
-            <span asp-validation-for="Assignment.IdProject" class="text-danger"></span>
-              <select name="IdProject" id="IdProject">
+            <select asp-for="Assignment.IdProject">
+                <optgroup label="IdProject">
+                     <option value="@null">null</option>
+                </optgroup>
                 <optgroup label="IdProject">
                 @foreach(var p in Model.Projects){
                     <option value="@p.Id">@p.Id</option>
                 }
                 </optgroup>
             </select>
+            <span asp-validation-for="Assignment.IdProject" class="text-danger"></span>
+
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
