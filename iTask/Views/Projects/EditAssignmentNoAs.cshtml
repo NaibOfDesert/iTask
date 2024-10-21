@@ -18,14 +18,15 @@ Edit
 
         
         <div class="form-floating py-2 col-12">
-            <input asp-for="Assignment.IdProject" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
             <label asp-for="Assignment.IdProject" class="ms-2"></label>
             <span asp-validation-for="Assignment.IdProject" class="text-danger"></span>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <select name="IdProject" id="IdProject">
+                <optgroup label="IdProject">
                 @foreach(var p in Model.Projects){
-                    <a class="dropdown-item" href="#">@p.Id</a>
+                    <option value="@p.Id">@p.Id</option>
                 }
-            </div>
+                </optgroup>
+            </select>
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
