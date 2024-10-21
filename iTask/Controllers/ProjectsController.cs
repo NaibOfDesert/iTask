@@ -150,25 +150,6 @@ public class ProjectsController : Controller
 
         return RedirectToAction("Details", new {id = assignment.IdProject});
     }
-    public IActionResult EditAssignmentNoAs(int id)
-    {
-        AssignmentNoAsCard assignmentNoAsCard = new AssignmentNoAsCard(){
-            Assignment = _unitOfWork.assignments.Get(x => x.Id == id),
-            Projects = _unitOfWork.projects.GetAll() 
-        };
-        return View(assignmentNoAsCard);
-    }
-
-    [HttpPost]
-    public IActionResult EditAssignmentNoAs(AssignmentNoAsCard assignmentNoAsCard)
-    {
-        if(assignmentNoAsCard.Assignment.IdProject == null){
-            return NotFound(); 
-        }
-        _unitOfWork.assignments.Update(assignmentNoAsCard.Assignment);
-        _unitOfWork.Save();
-        return RedirectToAction("Details", new {id = assignmentNoAsCard.Assignment.IdProject});
-    }
 
     public IActionResult RemoveAssignment (int? id) 
     {
