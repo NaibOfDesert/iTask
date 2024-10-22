@@ -8,7 +8,7 @@ public class Assignment
     [Required]
     [StringLength(100)]
     public string Name { get; set; } = "Task";
-    public string Description { get; set; } = "";
+    public string? Description { get; set; }
     [Required]
     public AssignmentStatus AssignmentStatus{ get; set; } = AssignmentStatus.ToDo; 
     [Required]

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace iTask.Migrations
 {
     /// <inheritdoc />
-    public partial class Basic : Migration
+    public partial class NewMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -181,12 +181,12 @@ namespace iTask.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdProject = table.Column<int>(type: "int", nullable: false),
+                    IdProject = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    assignmentStatus = table.Column<int>(type: "int", nullable: false),
-                    dateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    dateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AssignmentStatus = table.Column<int>(type: "int", nullable: false),
+                    DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -201,12 +201,12 @@ namespace iTask.Migrations
 
             migrationBuilder.InsertData(
                 table: "Assignments",
-                columns: new[] { "Id", "Description", "IdProject", "Name", "ProjectId", "assignmentStatus", "dateEnd", "dateStart" },
+                columns: new[] { "Id", "AssignmentStatus", "DateEnd", "DateStart", "Description", "IdProject", "Name", "ProjectId" },
                 values: new object[,]
                 {
-                    { 1, "", 1, "Test1", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(170) },
-                    { 2, "", 2, "Test2", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180) },
-                    { 3, "", 3, "Test3", null, 0, new DateTime(2024, 10, 13, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(180) }
+                    { 1, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6410), "", 1, "Docker", null },
+                    { 2, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), "", 2, "Buy System", null },
+                    { 3, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), "", 3, "Conception", null }
                 });
 
             migrationBuilder.InsertData(
@@ -214,10 +214,10 @@ namespace iTask.Migrations
                 columns: new[] { "Id", "DateEnd", "DateStart", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(80), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(30), "BasicProject" },
-                    { 2, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(90), "Project2" },
-                    { 3, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), "Project3" },
-                    { 4, new DateTime(2024, 10, 26, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), new DateTime(2024, 10, 6, 23, 7, 11, 45, DateTimeKind.Local).AddTicks(100), "Project4" }
+                    { 1, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6340), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6320), "iTask" },
+                    { 2, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "SoShops" },
+                    { 3, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "Travelski" },
+                    { 4, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6360), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "Bybye" }
                 });
 
             migrationBuilder.CreateIndex(
