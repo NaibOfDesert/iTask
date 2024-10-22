@@ -172,9 +172,9 @@ public class ProjectsController : Controller
     public IActionResult AssignmentUpgrade(int id)
     {
         Assignment assignment = FindAssignment(id); 
-        if(assignment.assignmentStatus == AssignmentStatus.ToDo)
-            assignment.assignmentStatus = AssignmentStatus.InProgress; 
-        else assignment.assignmentStatus = AssignmentStatus.Done; 
+        if(assignment.AssignmentStatus == AssignmentStatus.ToDo)
+            assignment.AssignmentStatus = AssignmentStatus.InProgress; 
+        else assignment.AssignmentStatus = AssignmentStatus.Done; 
 
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save();
@@ -190,9 +190,9 @@ public class ProjectsController : Controller
 public IActionResult AssignmentDowngrade(int id)
     {
         Assignment assignment = FindAssignment(id); 
-        if(assignment.assignmentStatus == AssignmentStatus.Done)
-            assignment.assignmentStatus = AssignmentStatus.InProgress; 
-        else assignment.assignmentStatus = AssignmentStatus.ToDo; 
+        if(assignment.AssignmentStatus == AssignmentStatus.Done)
+            assignment.AssignmentStatus = AssignmentStatus.InProgress; 
+        else assignment.AssignmentStatus = AssignmentStatus.ToDo; 
 
         _unitOfWork.assignments.Update(assignment);
         _unitOfWork.Save(); 

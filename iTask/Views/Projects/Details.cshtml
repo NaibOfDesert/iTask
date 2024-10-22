@@ -39,26 +39,29 @@
                 <tr> 
                     <td scope="">@a.Id</td>
                     <td scope="">@a.Name</td>
-                    <td scope="">@a.dateStart.ToString("dd/MM/yyyy")</td>
-                    <td scope="">@a.dateEnd.ToString("dd/MM/yyyy")</td>
-                    <td scope="">@a.assignmentStatus.ToString()</td>
+                    <td scope="">@a.DateStart.ToString("dd/MM/yyyy")</td>
+                    <td scope="">@a.DateEnd.ToString("dd/MM/yyyy")</td>
+                    <td scope="">@a.AssignmentStatus.ToString()</td>
                     <td scope="">                    
-                        @if(a.assignmentStatus == AssignmentStatus.InProgress || a.assignmentStatus == AssignmentStatus.Done ){
+                        @if(a.AssignmentStatus == AssignmentStatus.InProgress || a.AssignmentStatus == AssignmentStatus.Done ){
                             <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">back</a>
                         }
                     </td>
                     <td scope="">                    
-                        @if(a.assignmentStatus == AssignmentStatus.ToDo || a.assignmentStatus == AssignmentStatus.InProgress){
+                        @if(a.AssignmentStatus == AssignmentStatus.ToDo || a.AssignmentStatus == AssignmentStatus.InProgress){
                             <a class="" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">>>></a>
                         }
+                    </td>
+                    <td>
+                         <a class="" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-pen"></i>
+                        </a>
                     </td>
                     <td scope="">                    
                         <a class="" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
                             <i class="bi bi-trash"></i>
                         </a>
                     </td>
-
-
                 </tr>
             </tbody>
         }

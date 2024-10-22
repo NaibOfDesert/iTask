@@ -10,9 +10,9 @@ public class Assignment
     public string Name { get; set; } = "Task";
     public string Description { get; set; } = "";
     [Required]
-    public AssignmentStatus assignmentStatus{ get; set; } = AssignmentStatus.ToDo; 
+    public AssignmentStatus AssignmentStatus{ get; set; } = AssignmentStatus.ToDo; 
     [Required]
-    public DateTime dateStart { get; set; } = DateTime.Now;
+    public DateTime DateStart { get; set; } = DateTime.Now;
     [Required]
-    public DateTime dateEnd { get; set;} = DateTime.Now.AddDays(7);
+    public DateTime DateEnd { get; set;} = DateTime.Now.AddDays(7);
 }
