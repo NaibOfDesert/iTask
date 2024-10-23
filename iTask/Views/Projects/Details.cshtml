@@ -1,8 +1,10 @@
 @model ProjectCard
 
+
+
+
 <div class="text-left">
     <h1 class="display-4">@Model.Project.Name</h1>
-    
     <table class="table table-sm table-borderless">
         <thead>
         </thead>
@@ -20,48 +22,32 @@
         </tbody>
     </table>
      
-    <table class="table table-sm table-borderless" style="width:30%">
-        <thead>
-            <tr>
-                <th scope="col">ToDo</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="">
+        <div class="column left" style="background-color:#aaa;">
+            <h2>ToDo</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.ToDo)){
-                <tr class="clicable-row"> 
+                <div class="container"> 
                     <td scope="">@a.Name @a.Id</td>
-                </tr>
+                </div>
             }
-        </tbody>
-    </table>
-    <table class="table table-sm table-borderless" style="width:30%">
-        <thead>
-            <tr>
-                <th scope="col">InProgress</th>
-            </tr>
-        </thead>
-        <tbody>
+        </div>
+        <div class="column middle" style="background-color:#bbb;">
+            <h2>InProgress</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.InProgress)){
-                <tr class="clicable-row"> 
+                <div class="container"> 
                     <td scope="">@a.Name @a.Id</td>
-                </tr>
+                </div>
             }
-        </tbody>
-    </table>    <table class="table table-sm table-borderless" style="width:30%">
-        <thead>
-            <tr>
-                <th scope="col">Done</th>
-            </tr>
-        </thead>
-        <tbody>
+        </div>
+        <div class="column right" style="background-color:#ccc;">
+            <h2>Done</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done)){
-                <tr class="clicable-row"> 
+                <div class="container"> 
                     <td scope="">@a.Name @a.Id</td>
-                </tr>
+                </div>
             }
-        </tbody>
-    </table>
-
+        </div>
+    </div>
 
     <p>
         <a class="btn btn-primary" data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -77,10 +63,6 @@
             <i class="bi bi-trash"></i>
         </a>
     </p>
-
-
-
-
 
     <div class="collapse" id="List">
         <div class="card card-body">
