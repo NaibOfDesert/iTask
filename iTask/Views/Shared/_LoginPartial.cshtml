@@ -7,14 +7,18 @@
 {
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-            @User.Identity?.Name.Split('@')[0]
-            <i class="bi bi-person-circle"></i>
+            <button class="nav-link btn btn-link text-dark">
+                <i>@User.Identity?.Name.Split('@')[0]</i>
+                <i class="bi bi-person-circle"></i>
+            </button>
         </a>
     </li>
     <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <form  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button  type="submit" class="nav-link btn btn-link text-dark">
                 <i class="bi bi-box-arrow-in-left"></i>
+
+                <i>Logout</i>
             </button>
         </form>
     </li>
@@ -23,7 +27,10 @@ else
 {
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
-            <i class="bi bi-box-arrow-in-right"></i>
+            <button class="nav-link btn btn-link text-dark">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <i>Login</i>
+            </button>
         </a>
     </li>
 }

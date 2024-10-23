@@ -16,7 +16,7 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color: #E0DB00;
+  background-color: #ffc107;
 }
 
 
@@ -29,15 +29,14 @@ body {
 .column {
   float: left;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
 }
 
 .left, .right {
-  width: 25%;
+  width: 33%;
 }
 
 .middle {
-  width: 50%;
+  width: 34%;
 }
 
 /* Clear floats after the columns */
