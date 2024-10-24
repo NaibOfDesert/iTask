@@ -28,15 +28,19 @@ body {
 /* Create three unequal columns that floats next to each other */
 .column {
   float: left;
-  padding: 0px; /*Basic 10px*/
+  padding: 0px;
 }
 
 .left, .right {
   width: 33%;
+  
 }
 
 .middle {
   width: 34%;
+  padding-left: 10px;
+  padding-right: 10px;
+
 }
 
 /* Clear floats after the columns */

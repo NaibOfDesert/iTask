@@ -6,15 +6,16 @@
 <div class="text-left">
     <h1 class="display-4">@Model.Project.Name</h1>
     <table class="table table-sm table-borderless">
-        <thead>
-        </thead>
         <tbody>
             <tr class="clicable-row"> 
                 <td scope="">@Model.Project.Id . @Model.Project.Name</td>
                 <td scope="">@Model.Project.DateStart - @Model.Project.DateEnd</td>
                 <td scope="">@Model.Project.Assignments.Count()</td>
                 <td scope="">                    
-                    <a class="" asp-area="" asp-controller="Projects" asp-action="Remove" asp-route-id="@Model.Project.Id">
+                    <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="Edit" asp-route-id="@Model.Project.Id">
+                        <i class="bi bi-pen"></i>
+                    </a>
+                    <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="Remove" asp-route-id="@Model.Project.Id">
                         <i class="bi bi-trash"></i>
                     </a>
                 </td>
@@ -55,11 +56,11 @@
                 <div class="card border-dark mb-3" style="">
                     <h4 class="card-header">
                         @a.Name
-                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">
-                            <i class="bi bi-arrow-right-square"></i>
-                        </a>
                         <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">
                             <i class="bi bi-arrow-left-square"></i>
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">
+                            <i class="bi bi-arrow-right-square"></i>
                         </a>
                     </h4>
                     <div class="card-body text-dark">
@@ -78,9 +79,14 @@
             }
         </div>
         <div class="column right">
-            <h2>InProgress</h2>
+            <div class="card text-white bg-warning mb-3">
+                <h2 class="card-header" style="display: flex; justify-content: center;">
+                   Done
+                </h2>
+                
+            </div>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done)){
-                <div class="card border-light mb-3" style="">
+                <div class="card border-dark mb-3" style="">
                     <h4 class="card-header">
                         @a.Name
                         <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">
@@ -106,17 +112,11 @@
 </div>
 
 <div class="mb-3" >
-    <a class="btn btn-primary" data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="collapseExample">
-        TaskList
+    <a class="btn btn-light" data-toggle="collapse" href="#List" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <i class="bi bi-list-ul"></i>
     </a>
-    <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="@Model.Project.Id"> 
+    <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="AddAssignment" asp-route-id="@Model.Project.Id"> 
         <i class="bi bi-plus-square"></i> 
-    </a>
-    <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="Edit" asp-route-id="@Model.Project.Id">
-        <i class="bi bi-pen"></i>
-    </a>
-    <a class="btn btn-primary" asp-area="" asp-controller="Projects" asp-action="Remove" asp-route-id="@Model.Project.Id">
-        <i class="bi bi-trash"></i>
     </a>
 </div>
 
