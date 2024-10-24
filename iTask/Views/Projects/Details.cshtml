@@ -26,42 +26,79 @@
         <div class="column left">
             <h2>ToDo</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.ToDo)){
-                    <div class="card border-dark mb-3" style="">
-                        <h5 class="card-header">
-                            @a.Name
-                            <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">
-                                <i class="bi bi-arrow-right-square"></i>
-                            </a>
-                  
-                        </h5>
-                        <div class="card-body text-dark">
-                            <p class="card-text">@a.Description  aaa</p>
-                            <small class="card-title">@a.DateStart - @a.DateEnd</small>
-                        </div>
-                        <div class="mb-3 ml-3">
-                            <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id">
-                                <i class="bi bi-pen"></i>
-                            </a>
-                            <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </div>
+                <div class="card border-dark mb-3" style="">
+                    <h4 class="card-header">
+                        @a.Name
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">
+                            <i class="bi bi-arrow-right-square"></i>
+                        </a>
+                
+                    </h4>
+                    <div class="card-body text-dark">
+                        <p class="card-text">@a.Description  aaa</p>
+                        <small class="card-title">@a.DateStart - @a.DateEnd</small>
                     </div>
+                    <div class="mb-3 ml-3">
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-pen"></i>
+                        </a>
+                        <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
             }
         </div>
         <div class="column middle">
             <h2>InProgress</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.InProgress)){
-                <div class="container"> 
-                    <td scope="">@a.Name @a.Id</td>
+                <div class="card border-dark mb-3" style="">
+                    <h4 class="card-header">
+                        @a.Name
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentUpgrade" asp-route-id="@a.Id">
+                            <i class="bi bi-arrow-right-square"></i>
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">
+                            <i class="bi bi-arrow-left-square"></i>
+                        </a>
+                    </h4>
+                    <div class="card-body text-dark">
+                        <p class="card-text">@a.Description  aaa</p>
+                        <small class="card-title">@a.DateStart - @a.DateEnd</small>
+                    </div>
+                    <div class="mb-3 ml-3">
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-pen"></i>
+                        </a>
+                        <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
                 </div>
             }
         </div>
         <div class="column right">
-            <h2>Done</h2>
+            <h2>InProgress</h2>
             @foreach(var a in Model.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done)){
-                <div class="container"> 
-                    <td scope="">@a.Name @a.Id</td>
+                <div class="card border-light mb-3" style="">
+                    <h4 class="card-header">
+                        @a.Name
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="AssignmentDowngrade" asp-route-id="@a.Id">
+                            <i class="bi bi-arrow-left-square"></i>
+                        </a>
+                    </h4>
+                    <div class="card-body text-dark">
+                        <p class="card-text">@a.Description  aaa</p>
+                        <small class="card-title">@a.DateStart - @a.DateEnd</small>
+                    </div>
+                    <div class="mb-3 ml-3">
+                        <a class="btn btn-warning" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-pen"></i>
+                        </a>
+                        <a class="btn btn-dark" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@a.Id">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
                 </div>
             }
         </div>
