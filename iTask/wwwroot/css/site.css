@@ -49,3 +49,9 @@ body {
   display: table;
   clear: both;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: DodgerBlue;
+}
