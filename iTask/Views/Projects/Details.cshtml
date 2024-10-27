@@ -169,8 +169,8 @@
                     <th scope="col"></th>  
                 </tr>
             </thead>
-            @foreach(var a in Model.Assignments){
-                <tbody>
+            <tbody>
+                @foreach(var a in Model.Assignments){
                     <tr> 
                         <td scope="">@a.Id</td>
                         <td scope="">@a.Name</td>
@@ -186,8 +186,8 @@
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            }
+                }
+            </tbody>
         </table>        
     </div>
 </div>
