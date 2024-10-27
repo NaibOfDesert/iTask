@@ -1,8 +1,5 @@
 @model ProjectCard
 
-
-
-
 <div class="text-left">
     <h1 class="display-4">@Model.Project.Name</h1>
     <table class="table table-sm table-borderless">
@@ -25,6 +22,18 @@
             </tr>
         </tbody>
     </table>
+    <div class="progress mb-3">
+        @{
+            float valuenow = Model.Project.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done).Count(); 
+            float valuemax = Model. Project.Assignments.Count();
+
+            var percent = (valuenow/valuemax*100).ToString("0"); 
+
+        }
+        <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" style="width: @percent%" aria-valuenow="@valuenow" aria-valuemin="0" aria-valuemax="@valuemax">
+            @percent%
+        </div>
+    </div>
      
     <div class="mb-3" style="background-color:rgba(255, 255, 255, 0.742);">
         <div class="column left">
