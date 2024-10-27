@@ -17,6 +17,7 @@ html {
 body {
   margin-bottom: 60px;
   background-color: #ffc107;
+  background-color: white;
 }
 
 
@@ -32,12 +33,10 @@ body {
 }
 
 .left, .right {
-  width: 33%;
   
 }
 
 .middle {
-  width: 34%;
   padding-left: 10px;
   padding-right: 10px;
 
