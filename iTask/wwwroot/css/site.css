@@ -54,3 +54,7 @@ body {
   justify-content: center;
   background-color: DodgerBlue;
 }
+
+.backgroud-white{
+  background-color: rgb(222, 222, 222)
+}
