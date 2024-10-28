@@ -7,60 +7,42 @@
     ViewData["Title"] = "Projects";
 }
 
+<h1 class="display-4" style="display: flex; justify-content: center;">
+    Tasks List
+</h1>
 
-@if (SignInManager.IsSignedIn(User)){
- // TODO: add defentdenscies of admin ale signed projects to users.
-}
-
-
-<h1 class="text-dark text-center">Assignments</h1>  
-<div class="">
- <table class="table table-responsive text-dark">
+<div class="card card-body border-dark mb-3">
+    <table class="table text-dark">  
         <thead>
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Project id</th>
-                <th scope="col">date start</th>
-                <th scope="col">date end</th>
-                <th scope="col">status</th>
-                <th scope="col">a</th>  
-                <th scope="col">edit</th>  
-                <th scope="col">remove</th>  
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>   
             </tr>
-
-
         </thead>
-        @foreach(var m in Model){
-            <tbody>
+        <tbody>
+            @foreach(var m in Model){
                 <tr> 
-                    <th scope="col">@m.Id</th>
-                    <th scope="col">
-                        @if(m.IdProject == null){
-                            <a>NotAssigned</a>
-                        }
-                        else @m.IdProject
-                    </th>
-                    <th scope="col">@m.DateStart.ToString("dd/MM/yyyy")</th>
-                    <th scope="col">@m.DateEnd.ToString("dd/MM/yyyy")</th>
-                    <th scope="col">@m.AssignmentStatus.ToString()</th>
-                    <th scope="col">>>></th> 
-                    <th scope="col">
-                        <a class="" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@m.Id">
+                    <td>#@m.Id</td>
+                    <td>
+                        <a class="text-dark" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@m.Id">
+                            @m.Name
+                        </a>                    
+                    </td>
+                    <td>@m.DateStart.ToString("dd/MM/yyyy")-@m.DateEnd.ToString("dd/MM/yyyy")</td>
+                    <td>@m.AssignmentStatus.ToString()</td>
+                    <td align="right">                    
+                        <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@m.IdProject">
+                            <i class="bi bi-arrow-right-square"> @m.IdProject</i>
+                        </a>
+                        <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@m.Id">
                             <i class="bi bi-pen"></i>
                         </a>
-                    </th> 
-                    <th scope="col">
-                        <a class="" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@m.IdProject">
-                            <i class="bi bi-kanban"></i>
-                       </a>
-                    </th> 
-                    <th scope="col">
-                        <a class="" asp-area="" asp-controller="Projects" asp-action="RemoveAssignment" asp-route-id="@m.Id">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                    </th> 
+                    </td>
                 </tr>
-            </tbody>
-        }
+            }
+        </tbody>
     </table>
 </div> 
