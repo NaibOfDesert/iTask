@@ -172,12 +172,12 @@
             <tbody>
                 @foreach(var a in Model.Assignments){
                     <tr> 
-                        <td scope="">@a.Id</td>
-                        <td scope="">@a.Name</td>
-                        <td scope="">@a.DateStart.ToString("dd/MM/yyyy")</td>
-                        <td scope="">@a.DateEnd.ToString("dd/MM/yyyy")</td>
-                        <td scope="">@a.AssignmentStatus.ToString()</td>
-                        <td scope="" align="right">
+                        <td>@a.Id</td>
+                        <td>@a.Name</td>
+                        <td>@a.DateStart.ToString("dd/MM/yyyy")</td>
+                        <td>@a.DateEnd.ToString("dd/MM/yyyy")</td>
+                        <td>@a.AssignmentStatus.ToString()</td>
+                        <td align="right">
                             <a class="btn btn-light border-dark btn-sm" asp-area="" asp-controller="Projects" asp-action="EditAssignment" asp-route-id="@a.Id" style="background-color: rgb(222, 222, 222)">
                                 <i class="bi bi-pen"></i>
                             </a>
