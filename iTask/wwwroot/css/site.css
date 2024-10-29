@@ -17,7 +17,10 @@ html {
 body {
   margin-bottom: 60px;
   background-color: #ffc107;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  background-image: url("https://img.freepik.com/free-vector/flat-geometric-pattern-background_23-2149925054.jpg?t=st=1730232907~exp=1730236507~hmac=040e43ef372901c273db2a1d70135cc93d74ab748f721050bb42b3c2f7369811&w=2000");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
