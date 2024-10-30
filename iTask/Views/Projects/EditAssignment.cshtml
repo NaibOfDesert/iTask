@@ -1,41 +1,55 @@
 @model Assignment 
 
-Edit
 <h1>@Model.Id: @Model.Name</h1>
 
-<form method="post" class="row">
-    <div class="border p-3">
-        <div asp-validation-summary="ModelOnly"></div>
-            <div class="form-floating py-2 col-12">
-            <input asp-for="Name" class="form-control border-0 shadow" />
-            <label asp-for="Name" class="ms-2"></label>
-            <span asp-validation-for="Name" class="text-danger"></span>
+<div class="row mb-3 ml-0 mr-0" style="">
+    <div class="card border-dark mb-3" style="">
+        <h4 class="card-header">
+            @Model.Name
+        </h4>
+        <div class="card-body text-dark">
+            <p class="card-text">#@Model.Id:@Model.Description  aaa</p>
+            <small class="card-title">@Model.DateStart.ToString("dd/MM/yyyy") - @Model.DateEnd.ToString("dd/MM/yyyy")</small>
+            <form method="post" class="text-left">
+                <div class="">
+                    <div asp-validation-summary="ModelOnly"></div>
+                        <div class="form-floating py-2 col-12">
+                        <input asp-for="Name" class="form-control border-0 shadow" />
+                        <label asp-for="Name" class="ms-2"></label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="IdProject"  class="form-control border-0 shadow" />
+                        <label asp-for="IdProject" class="ms-2" type="hidden"></label>
+                        <span asp-validation-for="IdProject" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Description"  class="form-control border-0 shadow" />
+                        <label asp-for="Description" class="ms-2" type="hidden"></label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="AssignmentStatus"  class="form-control border-0 shadow" />
+                        <label asp-for="AssignmentStatus" class="ms-2" type="hidden"></label>
+                        <span asp-validation-for="AssignmentStatus" class="text-danger"></span>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div asp-validation-summary="ModelOnly"></div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="IdProject"  class="form-control border-0 shadow" />
-            <label asp-for="IdProject" class="ms-2" type="hidden"></label>
-            <span asp-validation-for="IdProject" class="text-danger"></span>
-        </div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="Description"  class="form-control border-0 shadow" />
-            <label asp-for="Description" class="ms-2" type="hidden"></label>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="AssignmentStatus"  class="form-control border-0 shadow" />
-            <label asp-for="AssignmentStatus" class="ms-2" type="hidden"></label>
-            <span asp-validation-for="AssignmentStatus" class="text-danger"></span>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-outline-primary border form-control">Save</button>
-            </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="Projects" asp-action="ListAssignment" class="btn btn-outline-secondary border form-control">
-                    Back to List
-                </a>
-            </div>
-        </div>
-    </div>
-</form>
+    </div>      
+</div>
+
+<div class="row mb-3 ml-0">
+    <button class="btn btn-light border-dark btn-sm backgroud-white" type="submit">
+        <i class="bi bi-floppy"></i>
+    </button>
+    <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.IdProject">
+        <i class="bi bi-arrow-right-square"></i>
+    </a>
+    <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="ListAssignment" asp-route-id="@Model.Id">
+        <i class="bi bi-arrow-left-square"></i>
+    </a>
+</div>
+
+
