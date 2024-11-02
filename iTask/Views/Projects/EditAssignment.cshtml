@@ -3,7 +3,7 @@
 <h1>#@Model.Id:@Model.Name</h1>
 
 <div class="row mb-3 ml-0 mr-0" style="">
-    <div class="card border-dark mb-3" style="">
+    <div class="card border-dark mb-3 col-12" style="">
         <h4 class="card-header">
             Details:        
         </h4>
@@ -12,22 +12,36 @@
             <form method="post" class="text-left">
                 <div class="ml-0">
                     <div asp-validation-summary="ModelOnly"></div>
-                        <div class="form-floating col-12">
-                        <input asp-for="Name" class="form-control border-dark shadow" />
+                    <div class="form-floating">
+                        <input asp-for="Name" class="form-control border-dark shadow"/>
                         <label asp-for="Name" class=""></label>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>  
-                    <div class="form-floating col-12">
+                    <div class="form-floating">
+                        <input asp-for="DateStart" class="form-control border-dark shadow" />
+                        <label asp-for="DateStart" class=""></label>
+                        <span asp-validation-for="DateStart" class="text-danger"></span>
+                    </div>                     
+                    <div class="form-floating">
+                        <input asp-for="DateEnd" class="form-control border-dark shadow" />
+                        <label asp-for="DateEnd" class=""></label>
+                        <span asp-validation-for="DateEnd" class="text-danger"></span>
+                    </div> 
+                    <div class="form-floating">
                         <input asp-for="AssignmentStatus" class="form-control border-dark shadow" />
                         <label asp-for="AssignmentStatus" class="" type="hidden"></label>
                         <span asp-validation-for="AssignmentStatus" class="text-danger"></span>
                     </div>
-                    <div class="form-floating col-12">
+                    <div class="form-floating">
                         <input asp-for="Description"  class="form-control border-dark shadow" />
                         <label asp-for="Description" class="" type="hidden"></label>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
-
+                    <div class="form-floating">
+                        <input asp-for="IdProject" type="hidden" class="form-control border-dark shadow" />
+                        <label asp-for="IdProject" type="hidden" class=""></label>
+                        <span asp-validation-for="IdProject" class="text-danger"></span>
+                    </div> 
                 </div>
 
                 <div class="row mb-3 ml-0">
