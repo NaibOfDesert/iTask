@@ -163,9 +163,21 @@ public class ProjectsController : Controller
         _unitOfWork.assignments.Remove(assignment);
         _unitOfWork.Save(); 
 
-        if (project != null){
-            return RedirectToAction("Details", new {id = project.Id});
+        return RedirectToAction("Details", new {id = project.Id});
+    }
+
+        public IActionResult RemoveAssignmentFromList (int? id) 
+    {
+        Assignment? assignment = FindAssignment(id);
+        
+        if (assignment == null){
+            return NotFound();
         }
+        Project? project = FindProject(assignment.IdProject);
+        
+        _unitOfWork.assignments.Remove(assignment);
+        _unitOfWork.Save(); 
+
         return RedirectToAction("ListAssignment");
     }
 
