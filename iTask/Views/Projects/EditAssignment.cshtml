@@ -23,7 +23,7 @@
                         <span asp-validation-for="DateStart" class="text-danger"></span>
                     </div>                     
                     <div class="form-floating">
-                        <input asp-for="DateEnd" class="form-control border-dark shadow" />
+                        <input asp-for="DateEnd" class="form-control border-dark shadow" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required/>
                         <label asp-for="DateEnd" class=""></label>
                         <span asp-validation-for="DateEnd" class="text-danger"></span>
                     </div> 
@@ -60,6 +60,18 @@
     </div>      
 </div>
 
+<script>
+document.getElementById("DateEnd").addEventListener("input", function (event) {
+    const input = event.target;
+    const value = input.value;
 
+    // Regular expression for dd/MM/yyyy format
+    const isValid = /^\d{2}\/\d{2}\/\d{4}$/.test(value);
 
-
+    if (!isValid && value !== "") {
+        input.setCustomValidity("Please enter a date in the format dd/mm/yyyy");
+    } else {
+        input.setCustomValidity("");
+    }
+});
+</script>
