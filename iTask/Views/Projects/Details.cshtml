@@ -39,6 +39,9 @@
         </div>
      </div>
 
+    <p>
+        @Model.Project.Description
+    </p>
     <div class="progress mb-3 border-dark">
         @{
             float valuenow = Model.Project.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done).Count(); 

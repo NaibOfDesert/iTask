@@ -11,6 +11,7 @@ public class Project
     [Required]
     public DateTime DateEnd { get; set; } = DateTime.Now.AddDays(20);
     public List<Assignment> Assignments{ get; set; } = new List<Assignment>();
+    public string? Description { get; set; }
     // Manager / Owner
     // UsersList
 

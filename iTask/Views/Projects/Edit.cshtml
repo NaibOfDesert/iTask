@@ -1,23 +1,66 @@
-@model Project
-Edit
-<h1>No.@Model.Id: @Model.Name</h1>
-<form method="post" class="row">
-    <div class="border p-3">
-        <div asp-validation-summary="ModelOnly"></div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="Name" class="form-control border-0 shadow" />
-            <label asp-for="Name" class="ms-2"></label>
-            <span asp-validation-for="Name" class="text-danger"></span>
+@model Project 
+
+<h1>#@Model.Id:@Model.Name</h1>
+
+<div class="row mb-3 ml-0 mr-0" style="">
+    <div class="card border-dark mb-3 col-12" style="">
+        <h4 class="card-header">
+            Details:        
+        </h4>
+        <div class="card-body text-dark">
+            <form method="post" class="text-left">
+                <div class="ml-0">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-floating">
+                        <input asp-for="Name" class="form-control border-dark shadow"/>
+                        <label asp-for="Name" class=""></label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>  
+                    <div class="form-floating">
+                        <input asp-for="DateStart" class="form-control border-dark shadow" />
+                        <label asp-for="DateStart" class=""></label>
+                        <span asp-validation-for="DateStart" class="text-danger"></span>
+                    </div>                     
+                    <div class="form-floating">
+                        <input asp-for="DateEnd" class="form-control border-dark shadow" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required/>
+                        <label asp-for="DateEnd" class=""></label>
+                        <span asp-validation-for="DateEnd" class="text-danger"></span>
+                    </div> 
+                    <div class="form-floating">
+                        <input asp-for="Description"  class="form-control border-dark shadow" />
+                        <label asp-for="Description" class="" type="hidden"></label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3 ml-0">
+                    <button class="btn btn-dark border-dark backgroud-dark mr-1" type="submit">
+                        <i class="bi bi-floppy"></i>
+                    </button>
+                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.Id">
+                        <i class="bi bi-backspace"></i>
+                    </a>
+                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="List">
+                        <i class="bi bi-arrow-left-square"></i>
+                    </a>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-outline-primary border form-control">Save</button>
-            </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="Projects" asp-action="Details" asp-route-id=@Model.Id class="btn btn-outline-secondary border form-control">
-                    Back to List
-                </a>
-            </div>
-        </div>
-    </div>
-</form>
+    </div>      
+</div>
+
+<script>
+document.getElementById("DateEnd").addEventListener("input", function (event) {
+    const input = event.target;
+    const value = input.value;
+
+    // Regular expression for dd/MM/yyyy format
+    const isValid = /^\d{2}\/\d{2}\/\d{4}$/.test(value);
+
+    if (!isValid && value !== "") {
+        input.setCustomValidity("Please enter a date in the format dd/mm/yyyy");
+    } else {
+        input.setCustomValidity("");
+    }
+});
+</script>

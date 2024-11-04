@@ -12,6 +12,7 @@ public class Assignment
     [Required]
     public AssignmentStatus AssignmentStatus{ get; set; } = AssignmentStatus.ToDo; 
     [Required]
+    
     public DateTime DateStart { get; set; } = DateTime.Now;
     [Required]
     public DateTime DateEnd { get; set;} = DateTime.Now.AddDays(7);
