@@ -39,7 +39,7 @@
                     <td>@m.DateStart.ToString("dd/MM/yyyy")-@m.DateEnd.ToString("dd/MM/yyyy")</td>
                     <td>@m.Assignments.Count().ToString()</td>
                     <td align="right">                    
-                        <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@m.Id">
+                        <a class="btn btn-dark border-dark btn-sm" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@m.Id">
                             <i class="bi bi-arrow-right-square"></i>
                         </a>
                         <a class="btn btn-light border-dark btn-sm backgroud-white" asp-area="" asp-controller="Projects" asp-action="Edit" asp-route-id="@m.Id">

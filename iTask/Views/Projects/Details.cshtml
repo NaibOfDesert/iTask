@@ -45,9 +45,15 @@
     <div class="progress mb-3 border-dark">
         @{
             float valuenow = Model.Project.Assignments.Where(x => x.AssignmentStatus == AssignmentStatus.Done).Count(); 
-            float valuemax = Model. Project.Assignments.Count();
+            float valuemax = Model.Project.Assignments.Count();
+            string percent;
 
-            var percent = (valuenow/valuemax*100).ToString("0"); 
+            if(valuemax == 0){
+                percent = 0.ToString("0"); 
+            }
+            else {
+                percent = (valuenow/valuemax*100).ToString("0"); 
+            }
 
         }
         <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" style="width: @percent%" aria-valuenow="@valuenow" aria-valuemin="0" aria-valuemax="@valuemax">
