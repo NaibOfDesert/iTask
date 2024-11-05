@@ -62,7 +62,8 @@ namespace iTask.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -183,7 +184,7 @@ namespace iTask.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdProject = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AssignmentStatus = table.Column<int>(type: "int", nullable: false),
                     DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -204,20 +205,20 @@ namespace iTask.Migrations
                 columns: new[] { "Id", "AssignmentStatus", "DateEnd", "DateStart", "Description", "IdProject", "Name", "ProjectId" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6410), "", 1, "Docker", null },
-                    { 2, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), "", 2, "Buy System", null },
-                    { 3, 0, new DateTime(2024, 10, 29, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6420), "", 3, "Conception", null }
+                    { 1, 0, new DateTime(2024, 11, 12, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, 1, "Docker", null },
+                    { 2, 0, new DateTime(2024, 11, 12, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, 2, "Buy System", null },
+                    { 3, 0, new DateTime(2024, 11, 12, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, 3, "Conception", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Projects",
-                columns: new[] { "Id", "DateEnd", "DateStart", "Name" },
+                columns: new[] { "Id", "DateEnd", "DateStart", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6340), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6320), "iTask" },
-                    { 2, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "SoShops" },
-                    { 3, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "Travelski" },
-                    { 4, new DateTime(2024, 11, 11, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6360), new DateTime(2024, 10, 22, 17, 16, 43, 51, DateTimeKind.Local).AddTicks(6350), "Bybye" }
+                    { 1, new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, "iTask" },
+                    { 2, new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, "SoShops" },
+                    { 3, new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, "Travelski" },
+                    { 4, new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local), null, "Bybye" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -25,12 +25,6 @@ public class ApplicationDbContext : IdentityDbContext
         new Project {Id = 3, Name = "Travelski"},
         new Project {Id = 4, Name = "Bybye"}
     );
-
-    modelBuilder.Entity<Assignment>().HasData(
-        new Assignment {Id = 1, IdProject = 1, Name = "Docker"},
-        new Assignment {Id = 2, IdProject = 2, Name = "Buy System"},
-        new Assignment {Id = 3, IdProject = 3, Name = "Conception"}
-    );
     }
 }
 
