@@ -5,6 +5,7 @@ public class Project
 {
     [Key]
     public int Id { get; set; }
+    [Required]
     public required string Name { get; set; }
     [Required]
     public DateTime DateStart { get; set; } = DateTime.Today;
