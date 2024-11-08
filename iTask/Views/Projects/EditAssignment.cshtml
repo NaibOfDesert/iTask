@@ -1,15 +1,7 @@
-@model Assignment 
+@model AssignmentCard 
 
-@{
-    List<AssignmentStatus> assignmentList = new List<AssignmentStatus> { 
-        AssignmentStatus.ToDo, 
-        AssignmentStatus.InProgress, 
-        AssignmentStatus.Done
-    }; 
-    assignmentList.Add(AssignmentStatus.ToDo);
-}
 
-<h1>#@Model.Id:@Model.Name</h1>
+<h1>#@Model.Assignment.Id:@Model.Assignment.Name</h1>
 
 <div class="mb-3 ml-0 mr-0" style="">
     <div class="card border-dark mb-3" style="">
@@ -17,35 +9,35 @@
             Details:        
         </h4>
         <div class="card-body text-dark">
-            <p class="card-text">Project #@Model.IdProject</p>
+            <p class="card-text">Project #@Model.Assignment.IdProject</p>
             <form method="post" class="text-left">
                 <div class="ml-0">
                     <div asp-validation-summary="ModelOnly"></div>
-                    <input asp-for="IdProject" class="form-control border-dark shadow" hidden/>
+                    <input asp-for="@Model.Assignment.IdProject" class="form-control border-dark shadow" hidden/>
                     <div class="form-floating">
-                        <input asp-for="Name" class="form-control border-dark shadow"/>
-                        <label asp-for="Name" class=""></label>
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="@Model.Assignment.Name" class="form-control border-dark shadow"/>
+                        <label asp-for="@Model.Assignment.Name" class=""></label>
+                        <span asp-validation-for="@Model.Assignment.Name" class="text-danger"></span>
                     </div>  
                     <div class="form-floating">
-                        <input asp-for="DateStart" class="form-control border-dark shadow" />
-                        <label asp-for="DateStart" class=""></label>
-                        <span asp-validation-for="DateStart" class="text-danger"></span>
+                        <input asp-for="@Model.Assignment.DateStart" class="form-control border-dark shadow" />
+                        <label asp-for="@Model.Assignment.DateStart" class=""></label>
+                        <span asp-validation-for="@Model.Assignment.DateStart" class="text-danger"></span>
                     </div>                     
                     <div class="form-floating">
-                        <input asp-for="DateEnd" class="form-control border-dark shadow" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required/>
-                        <label asp-for="DateEnd" class=""></label>
-                        <span asp-validation-for="DateEnd" class="text-danger"></span>
+                        <input asp-for="@Model.Assignment.DateEnd" class="form-control border-dark shadow" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required/>
+                        <label asp-for="@Model.Assignment.DateEnd" class=""></label>
+                        <span asp-validation-for="@Model.Assignment.DateEnd" class="text-danger"></span>
                     </div> 
                     <div class="form-group">
 
-                        <label asp-for="AssignmentStatus"></label>
-                        <select asp-for="AssignmentStatus" asp-items="@assignmentList" class="form-control"></select>
+                        <label asp-for="@Model.Assignment.AssignmentStatus"></label>
+                        <select asp-for="@Model.Assignment.AssignmentStatus" class="form-control"></select>
                     </div>
                     <div class="form-floating">
-                        <input asp-for="Description" class="form-control border-dark shadow" />
-                        <label asp-for="Description" class="" type="hidden"></label>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <input asp-for="@Model.Assignment.Description" class="form-control border-dark shadow" />
+                        <label asp-for="@Model.Assignment.Description" class="" type="hidden"></label>
+                        <span asp-validation-for="@Model.Assignment.Description" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -53,10 +45,10 @@
                     <button class="btn btn-dark border-dark backgroud-dark mr-1" type="submit">
                         <i class="bi bi-floppy"></i>
                     </button>
-                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.IdProject">
+                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.Assignment.IdProject">
                         <i class="bi bi-backspace"></i>
                     </a>
-                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="ListAssignment" asp-route-id="@Model.Id">
+                    <a class="btn btn-light border-dark backgroud-white mr-1" asp-area="" asp-controller="Projects" asp-action="ListAssignment" asp-route-id="@Model.Assignment.Id">
                         <i class="bi bi-arrow-left-square"></i>
                     </a>
                 </div>

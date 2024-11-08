@@ -139,16 +139,17 @@ public class ProjectsController : Controller
     public IActionResult EditAssignment(int id)
     {
         Assignment assignment = _unitOfWork.assignments.Get(x => x.Id == id);
-        return View(assignment);
+        AssignmentCard assignmentCard = new AssignmentCard(assignment);
+        return View(assignmentCard);
     }
 
     [HttpPost]
-    public IActionResult EditAssignment(Assignment assignment)
+    public IActionResult EditAssignment(AssignmentCard assignmentCard)
     {
-        _unitOfWork.assignments.Update(assignment);
+        _unitOfWork.assignments.Update(assignmentCard.Assignment);
         _unitOfWork.Save();
 
-        return RedirectToAction("Details", new {id = assignment.IdProject});
+        return RedirectToAction("Details", new {id = assignmentCard.Assignment.IdProject});
     }
 
     public IActionResult RemoveAssignment (int? id) 
