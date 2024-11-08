@@ -1,5 +1,14 @@
 @model Assignment 
 
+@{
+    List<AssignmentStatus> assignmentList = new List<AssignmentStatus> { 
+        AssignmentStatus.ToDo, 
+        AssignmentStatus.InProgress, 
+        AssignmentStatus.Done
+    }; 
+    assignmentList.Add(AssignmentStatus.ToDo);
+}
+
 <h1>#@Model.Id:@Model.Name</h1>
 
 <div class="mb-3 ml-0 mr-0" style="">
@@ -8,7 +17,7 @@
             Details:        
         </h4>
         <div class="card-body text-dark">
-            <p class="card-text">#@Model.IdProject Project</p>
+            <p class="card-text">Project #@Model.IdProject</p>
             <form method="post" class="text-left">
                 <div class="ml-0">
                     <div asp-validation-summary="ModelOnly"></div>
@@ -28,10 +37,10 @@
                         <label asp-for="DateEnd" class=""></label>
                         <span asp-validation-for="DateEnd" class="text-danger"></span>
                     </div> 
-                    <div class="form-floating">
-                        <input asp-for="AssignmentStatus" class="form-control border-dark shadow" />
-                        <label asp-for="AssignmentStatus" class="" type="hidden"></label>
-                        <span asp-validation-for="AssignmentStatus" class="text-danger"></span>
+                    <div class="form-group">
+
+                        <label asp-for="AssignmentStatus"></label>
+                        <select asp-for="AssignmentStatus" asp-items="@assignmentList" class="form-control"></select>
                     </div>
                     <div class="form-floating">
                         <input asp-for="Description" class="form-control border-dark shadow" />
