@@ -39,8 +39,13 @@ public class DbInitializer : IDbInitializer
 
 
         AppUser user = _db.Users.FirstOrDefault(x => x.UserName == "Admin");
-        _userManager.AddToRoleAsync(user, Roles.RoleAdmin).GetAwaiter().GetResult();
+        if(user != null){
+            var result = _userManager.AddToRoleAsync(user, Roles.RoleAdmin).GetAwaiter().GetResult();
 
-        //return;
+            if (!result.Succeeded)
+            {
+                throw new Exception("Failed to create default user.");
+            }
+        }
     }
 }
