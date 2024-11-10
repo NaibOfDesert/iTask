@@ -2,9 +2,11 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using iTask.Models;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace iTask.Controllers;
 
+[Authorize]
 public class ProjectsController : Controller
 {
     private readonly ILogger<HomeController> _logger;
