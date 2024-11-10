@@ -1,4 +1,3 @@
-
 public class ProjectCard{
     private IEnumerable<Assignment> enumerable;
 

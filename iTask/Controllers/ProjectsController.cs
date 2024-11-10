@@ -38,10 +38,16 @@ public class ProjectsController : Controller
     [HttpPost]
     public IActionResult Add(Project project)
     {
-        _unitOfWork.projects.Add(project);
-        _unitOfWork.Save();
+        if(ModelState.IsValid){
+            _unitOfWork.projects.Add(project);
+            _unitOfWork.Save();
 
-        return RedirectToAction("List");
+            return RedirectToAction("List");
+        }
+        else{
+            return View();
+        }
+
     }
 
     public IActionResult Details(int? id)
@@ -60,7 +66,7 @@ public class ProjectsController : Controller
     }
 
     [HttpPost]
-    public IActionResult Details(Project project)
+    public IActionResult Details(Project proxject)
     {
         return View(); 
     }
@@ -77,10 +83,16 @@ public class ProjectsController : Controller
     [HttpPost]
     public IActionResult Edit(Project project)
     {
-        _unitOfWork.projects.Update(project);
-        _unitOfWork.Save();
+        if(ModelState.IsValid){
+            _unitOfWork.projects.Update(project);
+            _unitOfWork.Save();
 
-        return RedirectToAction("Details", new { id = project.Id });
+            return RedirectToAction("Details", new { id = project.Id });
+        }
+        else{
+            return View(project); 
+        }
+
     }
     
     public IActionResult Remove(int? id)
@@ -139,17 +151,22 @@ public class ProjectsController : Controller
     public IActionResult EditAssignment(int id)
     {
         Assignment assignment = _unitOfWork.assignments.Get(x => x.Id == id);
-        AssignmentCard assignmentCard = new AssignmentCard(assignment);
-        return View(assignmentCard);
+        return View(assignment);
     }
 
     [HttpPost]
-    public IActionResult EditAssignment(AssignmentCard assignmentCard)
+    public IActionResult EditAssignment(Assignment assignment)
     {
-        _unitOfWork.assignments.Update(assignmentCard.Assignment);
-        _unitOfWork.Save();
+        if(ModelState.IsValid){
+            _unitOfWork.assignments.Update(assignment);
+            _unitOfWork.Save();
 
-        return RedirectToAction("Details", new {id = assignmentCard.Assignment.IdProject});
+            return RedirectToAction("Details", new {id = assignment.IdProject});
+        }
+        else {
+            return View(assignment);
+        }
+
     }
 
     public IActionResult RemoveAssignment (int? id) 
